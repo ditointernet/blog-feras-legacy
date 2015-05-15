@@ -1,11 +1,15 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Sobre a Dito
+permalink: /sobre-a-dito/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Somos uma empresa de tecnologia que nasceu para revolucionar a experiência de engajamento entre pessoas e marcas. Crescemos em meio à explosão das mídias sociais e ganhamos maturidade com grandes projetos.
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+A partir dessa experiência, percebemos a necessidade de conectar todos os ambientes digitais das empresas. Para isso, desenvolvemos uma ferramenta capaz de melhorar a retenção de clientes e aumentar a conversão.
+
+
+Com a plataforma Dito, as empresas podem identificar o perfil dos consumidores a partir de dados demográficos, sociais e de comportamento online, com o objetivo de direcionar ações de marketing de retenção.
+
+Acesse o [nosso site](http://dito.com.br) e saiba mais!

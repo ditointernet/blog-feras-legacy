@@ -1,14 +1,18 @@
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
+title: Blog de tecnologia da Dito
+email: plataforma@dito.com.br
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Um lugar para a equipe FERA que faz a Dito funcionar falar sobre boas
+  práticas, melhorias de código, refatoração, TDD, design patterns e mais, com
+  foco em Ruby.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://tecnologia.dito.com.br" # the base hostname & protocol for your site
+twitter_username: ditointernet
+github_username:  ditointernet
 
 # Build settings
 markdown: kramdown
+
+# Custom configuration
+timezone: America/Sao_Paulo
+permalink: /posts/:title/
