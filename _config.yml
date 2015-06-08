@@ -6,7 +6,7 @@ description: > # this means to ignore newlines until "baseurl:"
   práticas, melhorias de código, refatoração, TDD, design patterns e mais, com
   foco em Ruby.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://dito.github.io" # the base hostname & protocol for your site
+url: "http://ditointernet.github.io" # the base hostname & protocol for your site
 twitter_username: ditointernet
 github_username:  ditointernet
 
