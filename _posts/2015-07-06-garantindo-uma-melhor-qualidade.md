@@ -4,6 +4,7 @@ title:  "Garantindo uma melhor qualidade de código"
 date:   2015-07-06 09:10:31
 categories: tecnologia
 post_author: Sérgio Miranda
+comments: true
 ---
 
 Ao longo do processo de desenvolvimento, todo desenvolvedor de software possui a seguinte certeza: mudanças acontecerão. Para atender às demandas do mercado e dos clientes que estão sendo atendidos, o software sofre alterações. Estas, quando não bem planejadas e executadas, levam ao aparecimento do fenômeno conhecido como erosão arquitetural. É nesse momento que a manutenibilidade do sistema que está sendo desenvolvido começa a degradar: adicionar novas features tende a ser mais difícil, problemas de escalabilidade começam a vir à tona, etc. O problema de erosão arquitetural é ainda mais servero em linguagens dinâmicas, devido a alguns recursos providos por tais linguagens (eg., invocações dinâmicas, construções dinâmicas, eval, etc.). À medida que novos desenvolvedores são integrados ao time para ajudar a evoluir e manter o software, o problema pode se complicar ainda mais. Pensando nesses pontos descritos, a Dito criou um processo que guia a equipe de desenvolvimento para que o fenômeno de erosão arquitetural seja minimizado no software criado pela empresa. Então, vamos entender como o processo funciona.

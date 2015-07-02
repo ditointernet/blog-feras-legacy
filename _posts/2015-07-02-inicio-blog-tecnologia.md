@@ -4,6 +4,7 @@ title:  "Início do Blog de tecnologia!"
 date:   2015-07-02 10:12:31
 categories: tecnologia
 post_author: Bruno Andrade
+comments: true
 ---
 
 
