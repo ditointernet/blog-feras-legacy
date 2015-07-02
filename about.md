@@ -1,15 +1,27 @@
 ---
 layout: page
-title: Sobre a Dito
-permalink: /sobre-a-dito/
+title: About me
+permalink: /about/
 ---
 
-Somos uma empresa de tecnologia que nasceu para revolucionar a experiência de engajamento entre pessoas e marcas. Crescemos em meio à explosão das mídias sociais e ganhamos maturidade com grandes projetos.
+Hi, I am Gayan Virajith, a developer (who works on the web) based on Sri Lanka. 
+Graduated from the University College Dublin (National University of Ireland). 
+
+I am Working for [template-factory.nl][tf] also known as [Mearch ICT][m].
+Prefer to serve with Php and Ruby based stacks and also love to work 
+on [Jekyll][jekyll] and [Processwire CMS/CMF][pw].
+
+### Contact me
+
+Find me on [Google+][google] / [Github][github] / [Twitter][Twitter] or just say `Hello` at 
+[gayanvirajith@gmail.com](gayanvirajith@gmail.com).
 
 
-A partir dessa experiência, percebemos a necessidade de conectar todos os ambientes digitais das empresas. Para isso, desenvolvemos uma ferramenta capaz de melhorar a retenção de clientes e aumentar a conversão.
-
-
-Com a plataforma Dito, as empresas podem identificar o perfil dos consumidores a partir de dados demográficos, sociais e de comportamento online, com o objetivo de direcionar ações de marketing de retenção.
-
-Acesse o [nosso site](http://dito.com.br) e saiba mais!
+[tf]: http://template-factory.nl
+[m]: http://mearch.com
+[pw]: http://processwire.com
+[pwf]: http://processwire.com/talk
+[jekyll]: http://jekyllrb.com
+[github]: https://github.com/gayanvirajith
+[google]: https://plus.google.com/+GayanVirajith
+[twitter]: https://twitter.com/gayanvirajith

@@ -2,13 +2,64 @@
 title: Blog de tecnologia da Dito
 email: plataforma@dito.com.br
 description: > # this means to ignore newlines until "baseurl:"
-  Um lugar para a equipe FERA que faz a Dito funcionar falar sobre boas
-  práticas, melhorias de código, refatoração, TDD, design patterns e mais, com
-  foco em Ruby.
+  Compartilhamento de aprendizados e dúvidas da área de TI da Dito 
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://ditointernet.github.io" # the base hostname & protocol for your site
 twitter_username: ditointernet
 github_username:  ditointernet
+
+
+
+harmony:
+  name: 
+  # Little description about your site
+  description:  > # this means to ignore newlines until "baseurl:"
+     
+  # 'meta_description:' Write an awesome description for your new site here.
+  # It will appear in your document head meta (for Google search results) and 
+  # in your feed.xml site description.
+  meta_description: > # 
+   Um lugar para compartilharmos os aprendizados e dúvidas que acontecem nos desafios resolvidos diariamente na área de tecnologia da D
+  basetheme: theme-base-0b # pre defined thmes are darken, blue-water, redish.
+  author: # Author details
+    name: Gayan Virajith
+    email: gayanvirajith@gmail.com
+    url: http://gayanvirajith.github.io
+
+  # Google Analytics key, leave blank to ignore
+  google_analytics_key: UA-xxxx-x
+
+  # Profile links, leave blank to ignore
+  social: 
+    github: gayanvirajith
+    twitter: gayanvirajith
+    facebook: gayanvirajith
+    gplus: +GayanVirajith
+    dribble: gayan
+    pinterest: 
+  # Toggle disclaimer in footer
+  show_disclaimer: true
+
+# This is how you put pygments config in jekyll 2.0 instead of pygments: true
+highlighter: pygments 
+
+# Permalinks
+permalink:        pretty
+
+exclude: 
+  - CNAME
+  - Gemfile
+  - Rakefile
+  - README.md
+  - .gitignore
+  - .sass-cache
+  - Gemfile.lock
+
+# Sass conversion configs
+sass:
+    sass_dir: assets/css/_sass
+    style: :compressed
+
 
 # Build settings
 markdown: kramdown
@@ -16,3 +67,5 @@ markdown: kramdown
 # Custom configuration
 timezone: America/Sao_Paulo
 permalink: /posts/:title/
+
+
