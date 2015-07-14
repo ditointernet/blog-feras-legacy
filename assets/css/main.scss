@@ -155,7 +155,7 @@ hr {
 }
 
 /* bold text */
-strong, b { font-weight: 600; }
+strong, b { @include font('roboto_bold'); }
 
 /* italic */
 em, i { font-style: italic; }
