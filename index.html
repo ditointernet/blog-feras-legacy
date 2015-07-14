@@ -1,39 +1,40 @@
 ---
 layout: default
 ---
-<div id="home" class="page-content wc-container">
-	<div class="posts">
-  		{% for post in site.posts limit:10 %}
-  			<div class="post">
-    			<h3 class="post-title">
-			      <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
-			        {{ post.title }}
-			      </a>
-    			</h3>
+<div id="home">
+  <section class="page-content wc-container">
+      {% for post in site.posts limit:10 %}
+        <article class="post" itemscope itemtype="http://schema.org/Article" role="article">
+          <h2 class="post-title" itemprop="name">
+            <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
+              {{ post.title }}
+            </a>
+          </h2>
 
           <p class="post-meta">
             {% if (post.categories.size > 0 %}
-            <span class="categories">
-            {{ post.categories | array_to_sentence_string }}
+            <span class="categories" itemprop="about">
+              {{ post.categories | array_to_sentence_string }}
             </span> |
             {% endif %}
-            <span class="post-date">
-            {{ post.date | date: "%b %-d, %Y" }} 
-            </span>
-          </p>          
-    			    			
-  				<p>
-	  				{{ post.excerpt }}	
-  				</p>
-  				<p>
-  					<a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}" title="{{ post.title}}">
-  						Read More
-					</a>
-  				</p>
-  			</div>
-  		{% endfor %}
-	</div>
-	<div class="post-footer">
-		<div class="column-full"><a href="{{ '/blog' | prepend: site.baseurl | prepend: site.url }}">Blog archive</a></div>
-	</div>
+            <time class="post-date" datetime="{{ post.date | date: "%Y-%m-%d" }}" itemprop="datePublished" pubdate>
+              {{ post.date | date: "%b %-d, %Y" }}
+            </time>
+          </p>
+
+          <div>
+            {{ post.excerpt }}
+          </div>
+
+          <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}" title="{{ post.title}}">
+            Continue lendo
+          </a>
+        </article>
+      {% endfor %}
+  </section>
+  <div class="post-footer">
+    <div class="column-full">
+      <a href="{{ '/blog' | prepend: site.baseurl | prepend: site.url }}">Blog archive</a>
+    </div>
+  </div>
 </div>

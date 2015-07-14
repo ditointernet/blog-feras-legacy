@@ -2,23 +2,21 @@
 title: Blog de tecnologia da Dito
 email: plataforma@dito.com.br
 description: > # this means to ignore newlines until "baseurl:"
-  Compartilhamento de aprendizados e dúvidas da área de TI da Dito 
+  Compartilhamento de aprendizados e dúvidas da área de TI da Dito
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://ditointernet.github.io" # the base hostname & protocol for your site
 twitter_username: ditointernet
 github_username:  ditointernet
 
-
-
 harmony:
-  name: 
+  name: Blog de tecnologia da Dito
   # Little description about your site
   description:  > # this means to ignore newlines until "baseurl:"
-     
+
   # 'meta_description:' Write an awesome description for your new site here.
-  # It will appear in your document head meta (for Google search results) and 
+  # It will appear in your document head meta (for Google search results) and
   # in your feed.xml site description.
-  meta_description: > # 
+  meta_description: > #
    Um lugar para compartilharmos os aprendizados e dúvidas que acontecem nos desafios resolvidos diariamente na área de tecnologia da D
   basetheme: theme-base-0b # pre defined thmes are darken, blue-water, redish.
   author: # Author details
@@ -30,23 +28,23 @@ harmony:
   google_analytics_key: UA-xxxx-x
 
   # Profile links, leave blank to ignore
-  social: 
+  social:
     github: gayanvirajith
     twitter: gayanvirajith
     facebook: gayanvirajith
     gplus: +GayanVirajith
     dribble: gayan
-    pinterest: 
+    pinterest:
   # Toggle disclaimer in footer
   show_disclaimer: true
 
 # This is how you put pygments config in jekyll 2.0 instead of pygments: true
-highlighter: pygments 
+highlighter: pygments
 
 # Permalinks
 permalink:        pretty
 
-exclude: 
+exclude:
   - CNAME
   - Gemfile
   - Rakefile

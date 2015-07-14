@@ -1,8 +1,11 @@
 ---
 ---
 
-// Import reset 
-@import "partials/reset";
+// Import reset
+@import "partials/normalize";
+
+// Import font face
+@import "fonts";
 
 // Import colors, fonts etc...
 @import "partials/variables";
@@ -13,11 +16,11 @@
 // Import layout mixin
 @import "partials/layout";
 
-// Import syntax 
+// Import syntax
 @import "partials/syntax";
 
 
-/* -------------------------------- 
+/* --------------------------------
 
  Primary style
 
@@ -33,9 +36,11 @@ html * {
 }
 
 body {
+  color: #222;
+  @include font('roboto_light');
+
   font: {
     size: 100%;
-    family: $primary-font; // variables inside partials > _variables.scss
   }
 }
 
@@ -66,8 +71,10 @@ body {
 
 --------------------------------- */
 
-h1, h2, h3, h4, h5, h6 { 
+h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
+  margin: 0;
+  @include font('roboto_bold');
 }
 
 h1 {
@@ -80,7 +87,7 @@ h1 {
 
 h2 {
   // mobile first
-  @include font-size(18px);
+  @include font-size(24px);
   @include MQ(M) {
     @include font-size(31px);
   }
@@ -115,14 +122,15 @@ h6 {
 }
 
 p {
-  line-height: 1.6;
-  @include font-size(14px);
+  line-height: 1.8;
+  @include font-size(18px);
   @include MQ(M) {
-    @include font-size(18px);
+    @include font-size(20px);
   }
 }
 
 a {
+  @include font('roboto_bold');
   background: transparent;
 }
 
@@ -157,10 +165,10 @@ em, i { font-style: italic; }
 
 --------------------------------- */
 
-// default 
+// default
 
 a.default-anchor {
-  
+
   text-decoration: none;
   border-bottom: 1px solid transparent;
   color: $base-08;
@@ -171,12 +179,8 @@ a.default-anchor {
 
 }
 
-div.default-page-content {
-  h1, h2, h3, h4, h5, h6 { color: $base-00; }
-}
-
-body {
-  color: $color-2;
+.default-page-content {
+  h1, h2, h3, h4, h5, h6 { color: #222; }
 }
 
 a {
@@ -187,7 +191,7 @@ header.main-header, footer.main-footer {
   p,address {
     @include font-size(12px);
     @include MQ(M) {
-      @include font-size(14px);        
+      @include font-size(14px);
     }
   }
 }
@@ -195,9 +199,10 @@ header.main-header, footer.main-footer {
 header.main-header {
   color: $base-00;
   border-top: 5px $base-00 solid;
+  background: #ecf0f1;
 
   h1, h2 { text-align: center; color: inherit;}
-  a { 
+  a {
     color: inherit;
     &:hover, &:active, &:focus {
       border-bottom-color: transparent;
@@ -209,7 +214,7 @@ header.main-header {
     text-align: center;
     padding: 15px;
   }
-  ul li {       
+  ul li {
     display: inline-block;
     position:relative;
     color: $base-08;
@@ -221,7 +226,7 @@ header.main-header {
     width: 15px;
   }
 
-  ul li a { 
+  ul li a {
     display:inline-block;
     color: inherit;
     border-bottom: 2px transparent solid;
@@ -237,8 +242,40 @@ header.main-header {
 }
 
 footer.main-footer {
-  background-color: $base-00;
+  background-color: #444;
   color: $base-07;
+  border-bottom: 5px $base-00 solid;
+  text-align: center;
+  @include font-size(14px);
+
+  @include MQ(M) {
+    text-align: left;
+  }
+
+  a {
+    text-decoration: none;
+    border: 0;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .footer-logo {
+    display: block;
+    max-width: 140px;
+    height: auto;
+    margin: 0 auto 6px auto;
+
+    @include MQ(M) {
+      width: 100px;
+      position: relative;
+      top: -3px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
   .column {
     float:left;
     @include column(1);
@@ -264,7 +301,7 @@ footer.main-footer {
       height: 2px;
       background: $base-07;
       overflow: hidden;
-  } 
+  }
 
   ul.menu {
     padding: 0 0 1em 0;
@@ -272,9 +309,9 @@ footer.main-footer {
       @include font-size(12px);
       line-height: 1.6;
       display: inline;
-      padding-right: 10px;        
+      padding-right: 10px;
       @include MQ(M) {
-        @include font-size(16px);          
+        @include font-size(16px);
       }
     }
   }
@@ -286,7 +323,7 @@ footer.main-footer {
  ul.social-media {
   text-align:left;
   padding: 0 0 10px 0;
-  li { 
+  li {
     display:inline-block;
   }
   li > a {
@@ -303,12 +340,12 @@ footer.main-footer {
       background-color: $base-08;
     }
   }
-    
+
   li a.twitter {
     background-position: 0 0;
       &:hover {
         background-position: 0 -32px;
-    } 
+    }
   }
 
   li a.github {
@@ -363,44 +400,43 @@ footer.main-footer {
     }
 }
 
-div.page-content {
+.page-content {
   @extend .default-page-content;
   min-height: initial;
 
   @include MQ(M) {
     min-height: 400px;
   }
-}    
+}
 
-div.page-content {
-  ul {       
+.page-content {
+  ul {
     padding: 0 0 1em 0;
     li {
       @include font-size(14px);
-      color: $color-2; 
+      color: $color-2;
       line-height: 1.6;
       background: url(./images/bullet.svg);
       background-repeat: no-repeat;
-      background-position: 0 6px;
+      background-position: 0 11px;
       padding: 0 0 5px 15px;
       margin-left: 0;
-    }
-    @include MQ(M){        
-      li {         
-        @include font-size(16px);  
-        line-height: 1.5;
-        background-position: 0 7px; 
+      @include font-size(18px);
+
+      @include MQ(M) {
+        background-position: 0 12px;
+        @include font-size(20px);
       }
     }
   }
-  ol { 
+  ol {
     @include font-size(12px);
     // padding-top: 1em;
     padding-bottom: 1em;
     list-style: decimal;
     margin-left: 0;
     li {
-      color: $color-2; 
+      color: $color-2;
       line-height: 1.6;
       padding: 0 0 5px 0px;
       margin-left: 2em;
@@ -408,9 +444,9 @@ div.page-content {
     }
     @include MQ(M){
       @include font-size(16px);
-      li { 
+      li {
         line-height: 1.5;
-        background-position: 0 7px; 
+        background-position: 0 7px;
       }
     }
   }
@@ -418,10 +454,10 @@ div.page-content {
   dl {
     padding-bottom: 1em;
     dt, dd {
-      @include font-size(12px);  
-      line-height: 1.5;        
+      @include font-size(12px);
+      line-height: 1.5;
     }
-    
+
     dt {
       font-weight: bold;
       padding-bottom: 5px;
@@ -436,43 +472,56 @@ div.page-content {
       padding-left: 10px;
     }
 
-    @include MQ(M) {        
+    @include MQ(M) {
       dt, dd {
         @include font-size(16px);
-        line-height: 1.6;        
+        line-height: 1.6;
       }
     }
   }
-  
-  img { 
+
+  img {
     padding: 1em 0;
   }
 
   p {
-    margin-bottom: 1em;      
+    margin: 0 0 1em 0;
   }
 
-  h1, h2, h3, h4, h5, h6 { 
+  h1, h2, h3, h4, h5, h6 {
     padding-bottom: 5px;
+  }
+
+  .post-meta {
+    line-height: 1.6;
+    @include font-size(12px);
+    overflow: hidden;
+    display: block;
+    padding: 0 0 1em 0;
+    margin: 0;
+    color: #7A7A7A;
+    @include MQ(M) {
+      @include font-size(16px);
+    }
   }
 }
 
-.no-svg div.page-content ul li {
+.no-svg .page-content ul li {
   background: url(./images/bullet.png);
   @include font-size(13px);
-  color: $color-2; 
+  color: $color-2;
   line-height: 1.6;
   background-repeat: no-repeat;
   background-position: 0 6px;
   padding: 0 0 5px 15px;
   margin-left: 0;
-} 
+}
 
 // Theme base 01
 body.theme-base-01 {
-  
+
   a {
-    @extend .default-anchor;   
+    @extend .default-anchor;
   }
 
   footer.main-footer {
@@ -482,12 +531,12 @@ body.theme-base-01 {
 
   header.main-header {
     color: $base-01;
-    ul li { 
+    ul li {
       color: $base-08;
     }
   }
 
-  div.page-content {
+  .page-content {
     h1, h2, h3, h4, h5, h6 { color: $base-01; }
   }
 
@@ -500,17 +549,49 @@ body.theme-base-01 {
 
 --------------------------------- */
 
-header.main-header { 
+header.main-header {
   padding: 1em 0;
-  @include MQ(M) { padding: 2em 0; }
+  @include MQ(M) {
+    padding: 2em 0;
+  }
+
+  h1 {
+    @include font('lato_bold');
+    font-size: 1.6em;
+    text-transform: uppercase;
+    color: #555;
+    display: block;
+    text-align: center;
+    margin: 10px 0 0 0;
+
+    @include MQ(M) {
+      display: inline-block;
+      float: left;
+      margin: 29px 0 0 30px;
+    }
+  }
 }
+
 footer.main-footer {
   padding: 1em 0;
   @include MQ(M) { padding: 2em 0; }
 }
+
 .page-content {
-  padding: 1em 0;
-  @include MQ(M) { padding: 2em 0; }
+  padding: 0 0 1em 0;
+  @include MQ(M) { padding: 0 0 2em 0; }
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+
+  @include MQ(M) {
+    display: inline-block;
+    float: left;
+  }
 }
 
 
@@ -543,7 +624,7 @@ Code snippets
 code, pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
-code {  
+code {
   padding: .25em .5em;
   font-size: 85%;
   color: $base-08;
@@ -614,35 +695,87 @@ Post styles
 
 --------------------------------- */
 
-div.posts {
+.post {
+  padding: 1.5em 0;
+  border-bottom: 1px #e3e3e3 solid;
 
-  .div.post {
-    
-  }
-}
-div.post {
-  padding-top: .5em;
-  padding-bottom: 1em;
-  border-bottom: 1px $base-05 solid;
   @include MQ(M) {
-
-    padding-bottom: 2em;  
+    padding: 2.5em 0;
   }
 
   &:last-child {
     border-bottom: none;
   }
-}
-p.post-meta {
-  line-height: 1.6;
-  letter-spacing: 2px;
-  @include font-size(12px);
-  overflow: hidden;
-  display: block;
-  padding: 1em 0;
-  color: #7A7A7A;
-  @include MQ(M) {
-    @include font-size(16px);
+
+  a {
+    color: #777;
+    border-bottom: 1px dotted #939393;
+
+    &:hover {
+      color: #222;
+    }
+  }
+
+  .post-title a,
+  .post-title {
+    color: #2d2d2d;
+    border: 0;
+    text-decoration: none;
+    @include font('roboto_bold');
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .social-share {
+    .icon {
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+      border: 0;
+      background-image: url('./images/socials-icons.svg');
+      background-size: 224px 64px;
+      float: left;
+      margin-right: 10px;
+      outline: none;
+      @include transition(.1s, ease);
+      @include rounded;
+
+      &:hover {
+        @include scale(1.1);
+      }
+    }
+
+    .icon-facebook {
+      background-color: #3c599b;
+      background-position: -64px -32px;
+    }
+
+    .icon-twitter {
+      background-color: #1bb2e9;
+      background-position: 0 -32px;
+    }
+
+    .icon-google {
+      background-color: #d94530;
+      background-position: -128px -32px;
+    }
+  }
+
+  .post-title {
+    padding: 0;
+    margin: 0 0 .2em 0;
+    line-height: 1.1em;
+    @include font-size(28px);
+
+    @include MQ(M) {
+      @include font-size(34px);
+    }
+  }
+
+  ul {
+    list-style: none;
   }
 }
 
@@ -654,11 +787,16 @@ p.post-meta {
 .related {
   padding-top: 1em;
   padding-bottom: 1em;
-  border-top: 1px solid $base-05;
 
   @include MQ(M) {
     padding-top: 2em;
     padding-bottom: 2em;
+  }
+
+  .post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 }
 .related-posts {
@@ -686,7 +824,7 @@ p.post-meta {
 
 --------------------------------- */
 .post-footer {
-  
+
   border-top: 1px solid $base-05;
   border-bottom: 1px solid $base-05;
   height: 40px;
@@ -694,11 +832,11 @@ p.post-meta {
   width: 100%;
   position: relative;
 
-  @include MQ(M) {    
+  @include MQ(M) {
     height: 80px;
   }
 
-  .column-1, .column-2, .column-3, .column-full {    
+  .column-1, .column-2, .column-3, .column-full {
     padding-top: 10px;
     @include MQ(M) {
       padding-top: 30px;
@@ -707,7 +845,7 @@ p.post-meta {
     a,span {
       @include font-size(12px);
       @include MQ(M) {
-        @include font-size(16px);        
+        @include font-size(16px);
       }
     }
   }

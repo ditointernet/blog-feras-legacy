@@ -26,5 +26,10 @@ $base-0F: #bc9458;
 
 
 
-// Fonts 
+// Fonts
 $primary-font: 'Ubuntu Mono', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@mixin font($arguments) {
+  font-family: $arguments, Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}

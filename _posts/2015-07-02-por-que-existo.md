@@ -7,7 +7,6 @@ post_author: Bruno Andrade
 comments: true
 ---
 
-
 Desde o começo da Dito em 2007 estamos atrás de conhecimento e aprendendo a cada dia. Já organizamos eventos de tecnologia, fizemos palestras em eventos, demos aulas em faculdade, fizemos alguns posts no blog da Dito, mas até então não tínhamos um blog dedicado à tecnologia.
 
 Cada dia que passa o nosso desafio em tecnologia aumenta. Nossa base de dados cresce de forma bem agressiva, novos clientes entram, o número de requisições aumenta e a necessidade de termos uma arquitetura escalável, utilizarmos as tecnologias adequadas e mantermos toda a plataforma em constante evolução é um dos nossos principais focos.

@@ -23,3 +23,56 @@
   -o-transition: $args;
   transition: $args;
 }
+
+@mixin gradient($color: #f5f5f5, $start: #fff, $stop: #ccc) {
+  background: $color;
+  background: -moz-linear-gradient(top,  $start 0%, $stop 100%);
+  background: -webkit-gradient(linear, left bottom, color-stop(0%, $start), color-stop(100%, $stop));
+  background: -webkit-linear-gradient(top, $start 0%, $stop 100%);
+  background: -o-linear-gradient(top, $start 0%, $stop 100%);
+  background: -ms-linear-gradient(top, $start 0%, $stop 100%);
+  background: linear-gradient(to bottom, $start 0%, $stop 100%);
+  filter: unquote("progid:DXImageTransform.Microsoft.gradient(startColorstr='")
+    + ie-hex-str($start)
+    + unquote("', endColorstr='")
+    + ie-hex-str($stop)
+    + unquote("',GradientType=0)");
+}
+
+@mixin transition($duration:0.2s, $ease:ease-out) {
+  -webkit-transition: all $duration $ease;
+  -moz-transition: all $duration $ease;
+  -o-transition: all $duration $ease;
+  transition: all $duration $ease;
+}
+
+@mixin rounded($radius: 2px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transform($arguments) {
+  -webkit-transform: $arguments;
+  -moz-transform: $arguments;
+  -o-transform: $arguments;
+  -ms-transform: $arguments;
+  transform: $arguments;
+}
+
+@mixin scale($ratio:1.5){
+  @include transform(scale($ratio));
+}
+
+@mixin clearfix() {
+  *zoom:1;
+
+  &:before,
+  &:after {
+    content:"";
+    display:table;
+  }
+  &:after {
+    clear:both;
+  }
+}

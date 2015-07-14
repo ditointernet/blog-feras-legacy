@@ -2,47 +2,44 @@
 layout: default
 ---
 
-<div class="page-content wc-container">
-	
-	<div class="post">
-		<h1>{{ page.title }}</h1>
-		<p class="post-meta">
-      <span class="author">
+<section class="page-content wc-container">
+  <article class="post" itemscope itemtype="http://schema.org/Article" role="article">
+    <h1 class="post-title" itemprop="name">{{ page.title }}</h1>
+    <p class="post-meta">
+      <span class="author" itemprop="author">
         {{ page.post_author }}
       </span> |
-			{% if (page.categories.size > 0 %}
-      <span class="categories">
+      {% if (page.categories.size > 0 %}
+      <span class="categories" itemprop="about">
       {{ page.categories | array_to_sentence_string }}
       </span> |
-	    {% endif %}
-	    <span class="post-date">
-    	{{ page.date | date: "%b %-d, %Y" }} 
-	    </span>
-		</p>		
-		<div class="post">
-			{{ content }}
-		</div>
-	</div>
-	
+      {% endif %}
+      <time class="post-date" datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished" pubdate>
+        {{ page.date | date: "%b %-d, %Y" }}
+      </time>
+    </p>
+    <div>
+      {{ content }}
+    </div>
+    {% include social.html %}
+  </article>
 
-	{% if site.related_posts %}
-	<div class="related">
-		<h4>Related Posts1</h2>
-		<ul class="posts">
-		    {% for post in site.related_posts limit:3 %}
-		    <li>
-			  <span>{{ post.date | date_to_string }} &raquo;</span>
-			  <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">{{ post.title }}</a>
-		    </li>
-		    {% endfor %}
-		</ul>
-	</div>
-	{% endif %}
-	
-	
-	{% if page.comments %}
+  {% if site.related_posts %}
+  <div class="related">
+    <h4>Posts relacionados</h2>
+    <ul class="post-list">
+        {% for post in site.related_posts limit:3 %}
+        <li>
+        <span>{{ post.date | date_to_string }} &raquo;</span>
+        <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 
-	  <div id="disqus_thread"></div>
+  {% if page.comments %}
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
         // Required: on line below, replace text in quotes with your forum shortname
@@ -56,26 +53,24 @@ layout: default
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
   {% endif %}
-	
 
-	<div class="post-footer">
-		<div class="column-1">
-			{% if page.previous %}
-				<a href="{{page.previous.url | prepend: site.baseurl | prepend: site.url }}"><< Older</a>
-			{% else %}
-				<span><< Older</span>
-			{% endif %}
-		</div>
-		<div class="column-2"><a href="{{ '/' | prepend: site.baseurl | prepend: site.url }} ">Home</a></div>
-		<div class="column-3">
-			{% if page.next %}
-				<a href="{{ page.next.url | prepend: site.baseurl | prepend: site.url }}">Newer >></a>
-			{% else %}
-				<span>Newer >></span>
-			{% endif %}
-		</div>
-	</div>
-</div>
- 
+  <div class="post-footer">
+    <div class="column-1">
+      {% if page.previous %}
+        <a href="{{page.previous.url | prepend: site.baseurl | prepend: site.url }}"><< Antigos</a>
+      {% else %}
+        <span><< Older</span>
+      {% endif %}
+    </div>
+    <div class="column-2"><a href="{{ '/' | prepend: site.baseurl | prepend: site.url }} ">Home</a></div>
+    <div class="column-3">
+      {% if page.next %}
+        <a href="{{ page.next.url | prepend: site.baseurl | prepend: site.url }}">Recentes >></a>
+      {% else %}
+        <span>Newer >></span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
