@@ -74,7 +74,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
   margin: 0;
-  @include font('roboto_bold');
+  @include font('lato_bold');
 }
 
 h1 {
@@ -155,7 +155,7 @@ hr {
 }
 
 /* bold text */
-strong, b { font-weight: 600; }
+strong, b { @include font('roboto_bold'); }
 
 /* italic */
 em, i { font-style: italic; }
@@ -721,7 +721,7 @@ Post styles
     color: #2d2d2d;
     border: 0;
     text-decoration: none;
-    @include font('roboto_bold');
+    @include font('lato_bold');
 
     &:hover {
       color: #000;
