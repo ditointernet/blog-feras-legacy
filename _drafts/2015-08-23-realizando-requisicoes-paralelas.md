@@ -7,7 +7,7 @@ post_author: Victor Lellis
 comments: true
 ---
 
-Em um projeto recente, eu precisava realizar requisições JSON paralelas a um endpoint de uma API e de forma assíncrona para lidar com as respostas. Eu gosto de abordagem baseada em _middleware_ para lidar com requests HTTP no lado do servidor, então eu decidi tentar com o **Faraday* (configurado com o adapter **Typhoeus**), que lida com semelhante respostas HTTP no lado do cliente usando uma pilha de _middleware_. Typhoeus é um cliente HTTP que faz requisições paralelas de alto desempenho. O Faraday foi  projetado para fornecer uma abstração consistente para um número de diferentes HTTP adapters e Typhoeus para solicitações paralelas.
+Em um projeto recente, eu precisava realizar requisições JSON paralelas a um endpoint de uma API e de forma assíncrona para lidar com as respostas. Eu gosto de abordagem baseada em _middleware_ para lidar com requests HTTP no lado do servidor, então eu decidi tentar com o **Faraday** (configurado com o adapter **Typhoeus**), que lida com semelhante respostas HTTP no lado do cliente usando uma pilha de _middleware_. Typhoeus é um cliente HTTP que faz requisições paralelas de alto desempenho. O Faraday foi  projetado para fornecer uma abstração consistente para um número de diferentes HTTP adapters e Typhoeus para solicitações paralelas.
 
 Primeiro, vamos criar uma classe que inializa a conexão utilizando o **Typhoeus** para gerenciar as requisições paralelas e inserir nosso _middleware_ personalidado na pilha para lidar com as respostas.
 
