@@ -86,9 +86,7 @@ class MultipleRequests
   class RequestResponseHandler < Faraday::Response::Middleware
 
     def call(env)
-      # "env" contains the request
       @app.call(env).on_complete do
-        # "env" contains the request AND response
         env[:response].on_complete do |env_response|
           response = {
             request_url: env[:url].to_s,
