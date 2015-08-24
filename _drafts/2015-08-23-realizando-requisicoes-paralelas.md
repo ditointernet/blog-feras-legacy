@@ -177,7 +177,19 @@ Foi observado que o controle das requisições pode ser realizado através do pa
 
 Com o resultado do _benchmark-ips_, foi verificado a melhoria de performance superior a 16 vezes enviando 100 requisições através do método paralelo (_in_parallel_) em relação ao método sequencial do **Faraday** configurado com o **Typhoeus**.
 
+Referências
+-----------
+- [Faraday][faraday]
+- [Typhoeus][typhoeus]
+- [benchmark-ips][benchmark_ips]
+- [Parallel requests][paralell-requests]
+- [Class: Faraday::Response::Middleware][faraday-response-middleware]
+- [Class: Faraday::Response][faraday-response]
+
 
 [faraday]: https://github.com/lostisland/faraday
 [typhoeus]: https://github.com/typhoeus/typhoeus
 [benchmark_ips]: https://github.com/evanphx/benchmark-ips
+[paralell-requests]: https://github.com/lostisland/faraday/wiki/Parallel-requests
+[faraday-response-middleware]: http://www.rubydoc.info/github/lostisland/faraday/Faraday/Response/Middleware
+[faraday-response]: http://www.rubydoc.info/github/lostisland/faraday/Faraday/Response
