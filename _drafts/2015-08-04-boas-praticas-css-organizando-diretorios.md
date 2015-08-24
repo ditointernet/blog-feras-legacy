@@ -2,7 +2,7 @@
 layout: post
 title:  "Boas práticas de CSS: Organizando os diretórios"
 date:   2015-08-04 09:00:00
-categories: front-end css
+categories: frontend
 post_author: Jordan Lenon
 comments: true
 meta_description: 'Boas práticas de CSS para organizar os seus assets e diretórios. Essa estrutura serve tanto para LESS quando para SASS'
@@ -33,7 +33,7 @@ sass/
 {% endhighlight %}
 
 ## main.scss
-Arquivo usado como bootstrap de todo o projeto, nele eu importo os vendors, módulos, componentes e páginas. Seguindo uma ordem como no exemplo abaixo, onde evito problemas de sobrescrição de estilos.
+Arquivo usado como bootstrap de todo o projeto, nele importamos os vendors, módulos, componentes e páginas. Seguindo uma ordem como no exemplo abaixo, onde evitamos problemas de sobrescrição de estilos.
 
 {% highlight sass %}
 // VENDOR
@@ -76,5 +76,5 @@ Aqui vão os estilos personalizados para as páginas do projeto. Lembre sempre d
 ## /vendors
 Diretório destinado para bibliotecas feitas por outros desenvolvedores como: twitter bootstrap, normalize etc.
 
-## Conclusão
+## Mantenha seus arquivos organizados
 É sempre bom manter uma boa organização dos seus diretórios, pois isso evita possíveis problemas com a modularização do projeto, além disso, conforme o projeto vai crescendo, novas pessoas vão entrando na equipe e isso torna o compreendimento mais fácil para elas.
