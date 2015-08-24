@@ -17,7 +17,7 @@ Na nossa classe será possível passar um objeto para nosso _middleware_ persona
 
 A cada solicitação HTTP que fazemos dentro desse bloco será enfileirado e retornará imediatamente ao nosso _middleware_.
 
-```ruby
+ {% highlight ruby %}
 require 'typhoeus'
 require 'faraday'
 require 'typhoeus/adapters/faraday'
@@ -59,7 +59,7 @@ class Request
     end
   end
 end
-```
+{% endhighlight %}
 
 Construção da classe com o _Middleware_ personalizado
 ---------------------------------------------------------
@@ -68,7 +68,7 @@ A seguir, vamos implementar uma classe com um _response handler_, ou seja, nosso
 
 O argumento _env_response_ contém o satus da resposta e o retorno. A variável _success_count_ é utilizada para verificar as requisições que foram retornadas com sucesso.
 
-```ruby
+{% highlight ruby %}
 class MultipleRequests
   attr_reader :success_count
 
@@ -115,7 +115,7 @@ class MultipleRequests
     @request.sequential_get_all @arr
   end
 end
-```
+{% endhighlight %}
 
 Resultado e comparação de velocidade
 -------------------------------------
@@ -123,7 +123,7 @@ Resultado e comparação de velocidade
 Foi verificado o retorno de 100 requisições com sucesso e utilizando o _benchmark-ips_ foi medido a comparação de velocidade entre as requisições paralelas e sequenciais.
 
 
-```ruby
+{% highlight ruby %}
 require 'benchmark/ips'
 
 requests = MultipleRequests.new(size: 100)
@@ -140,11 +140,11 @@ Benchmark.ips do |x|
 
   x.compare!
 end
-```
+{% endhighlight %}
 
 Foi obtido o seguinte retorno:
 
-```
+{% highlight %}
 Requisições com sucesso no modo paralelo: 100
 Requisições com sucesso no modo sequencial: 100
 Calculating -------------------------------------
@@ -157,6 +157,6 @@ Calculating -------------------------------------
 Comparison:
             parallel:        2.3 i/s
           sequential:        0.1 i/s - 16.41x slower
-```
+{% endhighlight %}
 
 Logo, podemos concluir que é possível obter uma melhoria de performance superior a 16 vezes com 100 requisições utilizando o método paralelo (_in_parallel_) do **Faraday** configurado com o **Typhoeus** retornando a resposta ao nosso _middleware_ personalizado.
