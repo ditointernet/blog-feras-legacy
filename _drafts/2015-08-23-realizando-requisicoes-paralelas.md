@@ -11,7 +11,7 @@ Em um projeto recente, eu precisava realizar requisições JSON paralelas a um e
 
 **Typhoeus** é um cliente HTTP que faz requisições paralelas de alto desempenho. O **Faraday** foi projetado para fornecer uma abstração consistente para um número de diferentes _HTTP adapters_.
 
-Primeiro, vamos criar uma classe que inicializa a conexão utilizando o **Typhoeus** para gerenciar as requisições paralelas e inserir nosso _middleware_ personalidado na pilha para lidar com as respostas.
+Primeiro, vamos criar uma classe que inicializa a conexão utilizando o **Typhoeus** para gerenciar as requisições paralelas e inserir nosso _middleware_ personalizado na pilha para lidar com as respostas.
 
 Na nossa classe será possível passar um objeto para nosso _middleware_ personalizado. Em nosso método _parallel_get_all_ chamamos _in_parallel_ no objeto da conexão que enfileira as requisições para exeutar em modo paralelo. Em nosso método _sequential_get_all_ são realizados as requisições que são enfileiradas para executar em modo sequencial.
 
@@ -64,7 +64,7 @@ end
 Construção da classe com o _Middleware_ personalizado
 ---------------------------------------------------------
 
-A seguir, vamos implementar uma classe com um _response handler_, ou seja, nosso _middleware_ de resposta. O callback _on_complete_ será acionado quando nosso requeste recebe uma resposta do servidor (ou com o _timeout_). 
+A seguir, vamos implementar uma classe com um _response handler_, ou seja, nosso _middleware_ de resposta. O callback _on_complete_ será acionado quando nosso _request_ recebe uma resposta do servidor (ou com o _timeout_). 
 
 O argumento _env_response_ contém o satus da resposta e o retorno. A variável _success_count_ é utilizada para verificar as requisições que foram retornadas com sucesso.
 
