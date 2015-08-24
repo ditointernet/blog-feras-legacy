@@ -66,7 +66,7 @@ end
 
 Verifica-se que foi criado a classe _Request_ que inicializa a conexão utilizando o **Typhoeus** para gerenciar as requisições paralelas e inserir o _middleware_ customizado na pilha para lidar com as respostas, o _middleware_ é inserido com a opção _handler_.
 
-Na classe _Request_ é possível passar um objeto para o _middleware_ customizado, definido com a opção _object_. No método _parallel_get_all_ é chamado _in_parallel_ no objeto da conexão que enfileira as requisições para exeutar em modo paralelo. No método _sequential_get_all_ são realizados as requisições que são enfileiradas para executar em modo sequencial.
+Na classe _Request_ é possível passar um objeto para o _middleware_ customizado, definido com a opção _object_. No método _parallel_get_all_ é chamado _in_parallel_ no objeto da conexão que enfileira as requisições para executar em modo paralelo. No método _sequential_get_all_ são realizados as requisições que são enfileiradas para executar em modo sequencial.
 
 A requisição é enfileirada a cada solicitação HTTP que é realizada dentro desse bloco e a reposta é retornada imediatamente ao _middleware_ customizado.
 
@@ -74,7 +74,7 @@ A requisição é enfileirada a cada solicitação HTTP que é realizada dentro 
 Construção da classe com o _Middleware_ customizado
 ---------------------------------------------------------
 
-A seguir,foi implementado a classe _MultipleRequests_ com um _response handler_, ou seja, o _middleware_ de resposta. O código pode ser observado abaixo.
+A seguir, foi implementado a classe _MultipleRequests_ com um _response handler_, ou seja, o _middleware_ de resposta. O código pode ser observado abaixo.
 
 {% highlight ruby %}
 class MultipleRequests
@@ -127,7 +127,7 @@ end
 
 O callback _on_complete_ é acionado quando nosso _request_ recebe uma resposta do servidor (ou quando atinge o _timeout_). 
 
-O argumento _env_response_ contém o satus da resposta e o retorno. 
+O argumento _env_response_ contém o status e o retorno da resposta. 
 
 A variável _success_count_ é utilizada para verificar as requisições que foram retornadas com sucesso.
 
@@ -173,7 +173,10 @@ Comparison:
           sequential:        0.1 i/s - 16.41x slower
 {% endhighlight %}
 
-Logo, foi verificada a melhoria de performance superior a 16 vezes com 100 requisições utilizando o método paralelo (_in_parallel_) do **Faraday** configurado com o **Typhoeus**, retornando a resposta ao nosso _middleware_ personalizado, em relação ao método sequencial.
+Foi observado que o controle das requisições pode ser realizado através do parâmetro _object_, pois dentro do _middleware_ é verificado se ocorreu um erro na resposta da requisição. No retorno foi verificado que todas as requisições foram retornadas com sucesso.
+
+Com o resultado do _benchmark-ips_, foi verificado a melhoria de performance superior a 16 vezes enviando 100 requisições através do método paralelo (_in_parallel_) em relação ao método sequencial do **Faraday** configurado com o **Typhoeus**.
+
 
 [faraday]: https://github.com/lostisland/faraday
 [typhoeus]: https://github.com/typhoeus/typhoeus
