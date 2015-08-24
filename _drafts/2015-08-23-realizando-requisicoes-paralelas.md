@@ -7,17 +7,19 @@ post_author: Victor Lellis
 comments: true
 ---
 
-Em um projeto recente, eu precisava realizar requisições JSON paralelas a um endpoint de uma API e de forma assíncrona para lidar com as respostas. Eu gosto de abordagem baseada em _middleware_ para lidar com requests HTTP no lado do servidor, então eu decidi tentar com o **Faraday** (configurado com o adapter **Typhoeus**), que lida com respostas HTTP no lado do cliente usando uma pilha de _middleware_. 
+Em um projeto recente, foi necessário realizar mudanças para realizar requisições JSON paralelas a um endpoint de uma API e de forma assíncrona a fim de lidar com as respostas. Nesse projeto estava sendo realizados requisições sequenciais. 
 
-**Typhoeus** é um cliente HTTP que faz requisições paralelas de alto desempenho. O **Faraday** foi projetado para fornecer uma abstração consistente para um número de diferentes _HTTP adapters_.
+Para solucionar o problema foi verificado a abordagem baseada em _middleware_ para lidar com requests HTTP no lado do servidor. Baseado em estudos na documentação de dois Gems de ruby (**Faraday** e **Typhoeus**) foi verificado que com o **Faraday** com o _adapter_ **Typhoeus** é possível realizar paralelismo nas requisições e lidar com as respostas HTTP no lado do cliente usando uma pilha de _middleware_.  
 
-Primeiro, vamos criar uma classe que inicializa a conexão utilizando o **Typhoeus** para gerenciar as requisições paralelas e inserir nosso _middleware_ personalizado na pilha para lidar com as respostas.
+O [**Typhoeus**][typhoeus], um Gem desenvolvido em ruby, é utilizado para o cliente HTTP fazer requisições paralelas de alto desempenho. **Typhoeus** é um _wrapper_ para a _libcurl_, que é uma biblioteca madura e robusta em C para a realização de requisições HTTP com alto desempenho. Requisições paralelas podem ser executadas com a interface _hydra_. Conexões persistentes também são habilitadas por padrão desde que a connexão _curl_ da API tente reutilizar conexões existentes automaticamente.
 
-Na nossa classe será possível passar um objeto para nosso _middleware_ personalizado. Em nosso método _parallel_get_all_ chamamos _in_parallel_ no objeto da conexão que enfileira as requisições para exeutar em modo paralelo. Em nosso método _sequential_get_all_ são realizados as requisições que são enfileiradas para executar em modo sequencial.
+Já o [**Faraday**][faraday], outro Gem desenvolvido em ruby, é um cliente HTTP projetado para fornecer uma abstração consistente entre diferentes tipos de _apdapters_, como o Gem **Typhoeus** quanto o Gem **Net::Http**, por exemplo.
 
-A cada solicitação HTTP que fazemos dentro desse bloco será enfileirado e retornará imediatamente ao nosso _middleware_.
+A vantagem de se utilizar requisições paralelas é que a biblioteca _libcurl_ fica encarregada de realizar as requisições paralelas e retorna as requisições para o **Typhoeus** e o **Faraday** tem com o papel de entregar a resposta ao _middleware_.
 
- {% highlight ruby %}
+Considerando o seguinte código em ruby:
+
+{% highlight ruby %}
 require 'typhoeus'
 require 'faraday'
 require 'typhoeus/adapters/faraday'
@@ -61,12 +63,18 @@ class Request
 end
 {% endhighlight %}
 
-Construção da classe com o _Middleware_ personalizado
+
+Verifica-se que foi criado a classe _Request_ que inicializa a conexão utilizando o **Typhoeus** para gerenciar as requisições paralelas e inserir o _middleware_ customizado na pilha para lidar com as respostas, o _middleware_ é inserido com a opção _handler_.
+
+Na classe _Request_ é possível passar um objeto para o _middleware_ customizado, definido com a opção _object_. No método _parallel_get_all_ é chamado _in_parallel_ no objeto da conexão que enfileira as requisições para exeutar em modo paralelo. No método _sequential_get_all_ são realizados as requisições que são enfileiradas para executar em modo sequencial.
+
+A requisição é enfileirada a cada solicitação HTTP que é realizada dentro desse bloco e a reposta é retornada imediatamente ao _middleware_ customizado.
+
+
+Construção da classe com o _Middleware_ customizado
 ---------------------------------------------------------
 
-A seguir, vamos implementar uma classe com um _response handler_, ou seja, nosso _middleware_ de resposta. O callback _on_complete_ será acionado quando nosso _request_ recebe uma resposta do servidor (ou com o _timeout_). 
-
-O argumento _env_response_ contém o satus da resposta e o retorno. A variável _success_count_ é utilizada para verificar as requisições que foram retornadas com sucesso.
+A seguir,foi implementado a classe _MultipleRequests_ com um _response handler_, ou seja, o _middleware_ de resposta. O código pode ser observado abaixo.
 
 {% highlight ruby %}
 class MultipleRequests
@@ -117,11 +125,17 @@ class MultipleRequests
 end
 {% endhighlight %}
 
+O callback _on_complete_ é acionado quando nosso _request_ recebe uma resposta do servidor (ou quando atinge o _timeout_). 
+
+O argumento _env_response_ contém o satus da resposta e o retorno. 
+
+A variável _success_count_ é utilizada para verificar as requisições que foram retornadas com sucesso.
+
+
 Resultado e comparação de velocidade
 -------------------------------------
 
-Foi verificado o retorno de 100 requisições com sucesso e utilizando o _benchmark-ips_ foi medido a comparação de velocidade entre as requisições paralelas e sequenciais.
-
+Foi verificado o retorno de 100 requisições com sucesso e foi utilizado o Gem [_benchmark-ips_][benchmark_ips] para medir a comparação de velocidade entre as requisições paralelas e sequenciais.
 
 {% highlight ruby %}
 require 'benchmark/ips'
@@ -159,4 +173,8 @@ Comparison:
           sequential:        0.1 i/s - 16.41x slower
 {% endhighlight %}
 
-Logo, podemos concluir que é possível obter uma melhoria de performance superior a 16 vezes com 100 requisições utilizando o método paralelo (_in_parallel_) do **Faraday** configurado com o **Typhoeus** retornando a resposta ao nosso _middleware_ personalizado.
+Logo, foi verificada a melhoria de performance superior a 16 vezes com 100 requisições utilizando o método paralelo (_in_parallel_) do **Faraday** configurado com o **Typhoeus**, retornando a resposta ao nosso _middleware_ personalizado, em relação ao método sequencial.
+
+[faraday]: https://github.com/lostisland/faraday
+[typhoeus]: https://github.com/typhoeus/typhoeus
+[benchmark_ips]: https://github.com/evanphx/benchmark-ips
