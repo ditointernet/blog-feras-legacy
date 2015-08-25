@@ -13,9 +13,17 @@ Para solucionar o problema foi verificado a abordagem baseada em _middleware_ pa
 
 O [**Typhoeus**][typhoeus], um Gem desenvolvido em ruby, é utilizado para o cliente HTTP fazer requisições paralelas de alto desempenho. **Typhoeus** é um _wrapper_ para a _libcurl_, que é uma biblioteca madura e robusta em C para a realização de requisições HTTP com alto desempenho. Requisições paralelas podem ser executadas com a interface _hydra_. Conexões persistentes também são habilitadas por padrão desde que a connexão _curl_ da API tente reutilizar conexões existentes automaticamente.
 
+A interface [_Hydra_][hydra] gerencia as requisições HTTP paralelas. Seu limite padrão de concorrência de parelelismo é 200 e quanto mais solicitações são enfileiradas, _hydra_ irá salvá-las e iniciá-las a medida que as outras requisições forem finalizadas. A concorrência pode ser modificada através do construtor de _hydra_.
+
 Já o [**Faraday**][faraday], outro Gem desenvolvido em ruby, é um cliente HTTP projetado para fornecer uma abstração consistente entre diferentes tipos de _apdapters_, como o Gem **Typhoeus** quanto o Gem **Net::Http**, por exemplo.
 
 A vantagem de se utilizar requisições paralelas é que a biblioteca _libcurl_ fica encarregada de realizar as requisições paralelas e retorna as requisições para o **Typhoeus** e o **Faraday** tem com o papel de entregar a resposta ao _middleware_.
+
+No modo de concorrência, a biblioteca _libcurl_ fica responsável de executar a técnica _HTTP pipelining_, que é uma técnica para enviar requisiçõs em uma única conexão TCP sem esperar pelas respostas correspontentes., resultando em uma melhora dramática no ganho de performance.
+
+Abaixo segue o esquema de funcionamento de requisições síncronas e as requisições que utilizam a conexão com o método pipelining.
+
+![Conexão síncrona vs pipelined](https://upload.wikimedia.org/wikipedia/commons/1/19/HTTP_pipelining2.svg)
 
 Considerando o seguinte código em ruby:
 
@@ -185,6 +193,7 @@ Referências
 - [Parallel requests][paralell-requests]
 - [Class: Faraday::Response::Middleware][faraday-response-middleware]
 - [Class: Faraday::Response][faraday-response]
+- [Wikipedia: HTTP pipelining][HTTP-pipelining]
 
 
 [faraday]: https://github.com/lostisland/faraday
@@ -193,3 +202,5 @@ Referências
 [paralell-requests]: https://github.com/lostisland/faraday/wiki/Parallel-requests
 [faraday-response-middleware]: http://www.rubydoc.info/github/lostisland/faraday/Faraday/Response/Middleware
 [faraday-response]: http://www.rubydoc.info/github/lostisland/faraday/Faraday/Response
+[hydra]: http://www.rubydoc.info/github/typhoeus/typhoeus/Typhoeus/Hydra
+[HTTP-pipelining]: https://en.wikipedia.org/wiki/HTTP_pipelining
