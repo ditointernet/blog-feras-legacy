@@ -183,7 +183,7 @@ Comparison:
 
 Foi observado que o controle das requisições pode ser realizado através do parâmetro _object_, pois dentro do _middleware_ é verificado se ocorreu um erro na resposta da requisição. No retorno foi verificado que todas as requisições foram retornadas com sucesso.
 
-Com o resultado do _benchmark-ips_, foi verificado a melhoria de performance superior a 16 vezes enviando 100 requisições através do método paralelo (_in_parallel_) em relação ao método sequencial do **Faraday** configurado com o **Typhoeus**.
+Com o resultado do _benchmark-ips_, foi verificado a melhoria de performance superior a 16 vezes enviando 100 requisições através do método paralelo (_in_parallel_) em relação ao método sequencial do **Faraday** configurado com o _adapter_ **Typhoeus**.
 
 Referências
 -----------
