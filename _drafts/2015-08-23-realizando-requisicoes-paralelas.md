@@ -19,7 +19,7 @@ Já o [**Faraday**][faraday], outro Gem desenvolvido em ruby, é um cliente HTTP
 
 A vantagem de se utilizar requisições paralelas é que a biblioteca _libcurl_ fica encarregada de realizar as requisições paralelas e retorna as requisições para o **Typhoeus** e o **Faraday** tem com o papel de entregar a resposta ao _middleware_.
 
-No modo de concorrência, a biblioteca _libcurl_ fica responsável de executar a técnica _HTTP pipelining_, que é uma técnica para enviar requisiçõs em uma única conexão TCP sem esperar pelas respostas correspontentes., resultando em uma melhora dramática no ganho de performance.
+No modo de concorrência, a biblioteca _libcurl_ fica responsável de executar a técnica _HTTP pipelining_, que é uma técnica para enviar requisiçõs em uma única conexão TCP sem esperar pelas respostas correspondentes., resultando em uma melhora dramática no ganho de performance.
 
 Abaixo segue o esquema de funcionamento de requisições síncronas e as requisições que utilizam a conexão com o método pipelining.
 
