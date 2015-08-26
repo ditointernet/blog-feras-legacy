@@ -166,7 +166,7 @@ end
 
 Foi obtido o seguinte retorno:
 
-{% highlight %}
+{% highlight sh %}
 Requisições com sucesso no modo paralelo: 100
 Requisições com sucesso no modo sequencial: 100
 Calculating -------------------------------------
