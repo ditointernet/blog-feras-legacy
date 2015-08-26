@@ -2,7 +2,7 @@
 layout: post
 title:  "Por que existo?"
 date:   2015-07-02 10:12:31
-categories: tecnologia
+category: tecnologia
 post_author: Bruno Andrade
 comments: true
 ---

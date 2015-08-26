@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<div class="page-content wc-container">
+  {% if site.categories[page.category] %}
+    {% for post in site.categories[page.category] %}
+      {% if post.category %}
+        {% for site_category in site.data.categories %}
+          {% if site_category.slug == post.category %}
+              {% assign category = site_category %}
+          {% endif %}
+        {% endfor %}
+        {% if category %}
+          {% capture category_content %}
+            <a href="/{{ category.slug }}/">{{ category.name }}</a>
+          {% endcapture %}
+        {% endif %}
+      {% else %}
+        {% assign category_content = '' %}
+      {% endif %}
+      <article class="post" itemscope itemtype="http://schema.org/Article" role="article">
+        <h2 class="post-title" itemprop="name">
+          <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
+            {{ post.title }}
+          </a>
+        </h2>
+
+        <p class="post-meta">
+          <span class="author" itemprop="author">
+            {{ post.post_author }}
+          </span> |
+          <span class="categories" itemprop="about">
+            {{ category_content }}
+          </span> |
+          <time class="post-date" datetime="{{ post.date | date: "%Y-%m-%d" }}" itemprop="datePublished" pubdate>
+            {{ post.date | date: "%b %-d, %Y" }}
+          </time>
+        </p>
+
+        <div>
+          {{ post.excerpt }}
+        </div>
+
+        <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}" title="{{ post.title}}">
+          Continue lendo
+        </a>
+      </article>
+    {% endfor %}
+    {% else %}
+      <p>Nenhum post encontrado.</p>
+  {% endif %}
+</div>

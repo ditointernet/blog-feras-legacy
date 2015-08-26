@@ -2,7 +2,7 @@
 layout: post
 title:  "Pensando em UX"
 date:   2015-08-10 09:00:00
-categories: ux
+category: ux
 post_author: Jordan Lenon
 comments: true
 meta_description: 'Alguns pontos básicos que você como UX Designer deve analisar enquanto está projetando algo'

@@ -1,21 +1,34 @@
 ---
 layout: default
 ---
+{% assign post = page %}
+{% if post.category %}
+  {% for site_category in site.data.categories %}
+    {% if site_category.slug == post.category %}
+        {% assign category = site_category %}
+    {% endif %}
+  {% endfor %}
+  {% if category %}
+    {% capture category_content %}
+      <a href="/{{ category.slug }}/">{{ category.name }}</a>
+    {% endcapture %}
+  {% endif %}
+{% else %}
+  {% assign category_content = '' %}
+{% endif %}
 
 <section class="page-content wc-container">
   <article class="post" itemscope itemtype="http://schema.org/Article" role="article">
-    <h1 class="post-title" itemprop="name">{{ page.title }}</h1>
+    <h1 class="post-title" itemprop="name">{{ post.title }}</h1>
     <p class="post-meta">
       <span class="author" itemprop="author">
-        {{ page.post_author }}
+        {{ post.post_author }}
       </span> |
-      {% if (page.categories.size > 0 %}
       <span class="categories" itemprop="about">
-      {{ page.categories | array_to_sentence_string }}
+        {{ category_content }}
       </span> |
-      {% endif %}
-      <time class="post-date" datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished" pubdate>
-        {{ page.date | date: "%b %-d, %Y" }}
+      <time class="post-date" datetime="{{ post.date | date: "%Y-%m-%d" }}" itemprop="datePublished" pubdate>
+        {{ post.date | date: "%b %-d, %Y" }}
       </time>
     </p>
     <div>
@@ -38,7 +51,7 @@ layout: default
   </div>
   {% endif %}
 
-  {% if page.comments %}
+  {% if post.comments %}
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
@@ -57,16 +70,16 @@ layout: default
 
   <div class="post-footer">
     <div class="column-1">
-      {% if page.previous %}
-        <a href="{{page.previous.url | prepend: site.baseurl | prepend: site.url }}"><< Antigos</a>
+      {% if post.previous %}
+        <a href="{{post.previous.url | prepend: site.baseurl | prepend: site.url }}"><< Antigos</a>
       {% else %}
         <span><< Older</span>
       {% endif %}
     </div>
     <div class="column-2"><a href="{{ '/' | prepend: site.baseurl | prepend: site.url }} ">Home</a></div>
     <div class="column-3">
-      {% if page.next %}
-        <a href="{{ page.next.url | prepend: site.baseurl | prepend: site.url }}">Recentes >></a>
+      {% if post.next %}
+        <a href="{{ post.next.url | prepend: site.baseurl | prepend: site.url }}">Recentes >></a>
       {% else %}
         <span>Newer >></span>
       {% endif %}
