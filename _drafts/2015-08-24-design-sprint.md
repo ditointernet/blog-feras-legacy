@@ -10,6 +10,8 @@ meta_description: ''
 
 Design Sprint é um método desenvolvido no [Google Ventures](http://gv.com/) que busca resolver problemas específicos de um produto, onde é possível testar e validar as questões levantadas. Ele é baseado em metodologia ágil e pode ser aplicado por equipes de qualquer tamanho.
 
+Aqui na Dito já estamos usando o Design Sprint e já tem feito muita diferença na equipe.
+
 ## 6 passos
 O Design Sprint segue 6 passos que podem ser feitos em até 5 dias.
 
@@ -72,14 +74,20 @@ Etapa onde cada participante começa a desenvolver sua idéias. É aplicado o m�
 * **Crazy Eights**: Com a folha divida em 8 retângulos o participante irá desenhar suas idéias. / **5 minutos**
 * **One big idea**: O desafio é centralizar as idéias do Crazy Eights e desenhar unificá-la em um novo desenho. / **5 minutos**
 * **Storyboard**: Algumas idéias podem ser complexas demais para serem desenhadas em uma única tela, então peça ao time para criar um storyboard onde será desenhado um pequeno fluxo da funcionalidade, passo a passo. / **5 minutos**<br/><br/>
-![Crazy Eights](http://dito.com.br/wp-content/uploads/2015/08/crazy8_.jpg){: .border-image .full-image }
+
+Design Sprint na Dito - Crazy Eights
+![Crazy Eights Dito](http://dito.com.br/wp-content/uploads/2015/08/11960176_1036979569668228_2957416587285452414_n.jpg){: .border-image .full-image }
+
+Design Sprint na Dito - Crazy Eights + Storyboard
+![Design Sprint Dito](http://dito.com.br/wp-content/uploads/2015/08/11949499_1036979629668222_1762903283606702928_n.jpg){: .border-image .full-image }
 
 ## 4. Decide
-Hora de selecionar as melhores idéias. É realizado uma votação em silêncio, onde cada um da o seu voto em anônimo no quadro de idéias. Depois é realizado uma discurção em grupo para decidir o que será prototipado.
+Hora de selecionar as melhores idéias. É realizado uma votação em silêncio (**Zen Voting**), onde cada um da o seu voto em anônimo no quadro de idéias. Depois é realizado uma discurção em grupo para decidir o que será prototipado (**Team Review**).
 
 O importante nessa etapa é cada um trazer uma visão diferente e defender o seu ponto de vista.
 
-![Decide](http://dito.com.br/wp-content/uploads/2015/08/decide.jpg){: .border-image .full-image }
+Design Sprint na Dito - Zen Voting + Team Review
+![Decide - Dito](http://dito.com.br/wp-content/uploads/2015/08/11035837_1036979573001561_5757982447396068927_n.jpg){: .border-image .full-image }
 
 ## 5. Prototype
 Nesta etapa é desenvolvido algo que possa ser testado pelos usuários. Pode ser desenvolvido: uma tela simples, protótipo navegável, um vídeo etc.
