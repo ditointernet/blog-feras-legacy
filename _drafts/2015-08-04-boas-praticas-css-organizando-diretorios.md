@@ -8,7 +8,7 @@ comments: true
 meta_description: 'Boas práticas de CSS para organizar os seus assets e diretórios. Essa estrutura serve tanto para LESS quando para SASS'
 ---
 
-Vamos aprender algumas boas práticas para organizar os seus assets e diretórios. Irei mostrar alguns exemplos e explicar a forma com que busco trabalhar. Você poderá seguir a risca ou adaptar para a forma com que achar melhor. Essa estrutura serve tanto para **LESS** quanto para **SASS**.
+Vamos aprender algumas boas práticas para organizar os seus assets e diretórios. Irei mostrar alguns exemplos e explicar cada um deles. Essa estrutura serve tanto para **LESS** quanto para **SASS**.
 
 ## Estrutura de diretórios
 {% highlight php %}
@@ -64,17 +64,23 @@ Arquivo usado como bootstrap de todo o projeto, nele importamos os vendors, mód
 @import 'pages/account';
 {% endhighlight %}
 
-## /modules
+## modules
 Aqui ficam todos os módulos que podem ser compartilhados junto ao projeto, você pode criar alerts, estilo de formulário, botões etc.
 
-## /components
+## components
 Muitos usam também como 'core', você pode inserir partes isoladas do layout, mas que não são necessariamente um módulo. Como por exemplo o header e o footer.
 
-## /pages
+## pages
 Aqui vão os estilos personalizados para as páginas do projeto. Lembre sempre de fazer bom uso da modularização e evitar repetição e sobrescrição de estilos para que o código fique bem performático.
 
-## /vendors
+## vendors
 Diretório destinado para bibliotecas feitas por outros desenvolvedores como: twitter bootstrap, normalize etc.
 
 ## Mantenha seus arquivos organizados
 É sempre bom manter uma boa organização dos seus diretórios, pois isso evita possíveis problemas com a modularização do projeto, além disso, conforme o projeto vai crescendo, novas pessoas vão entrando na equipe e isso torna o compreendimento mais fácil para elas.
+
+## Alguns artigos para auxiliar no estudo
+* [Organizando projeto Sass](http://helabs.com/blog/2014/02/17/organizando-projeto-sass/)
+* [A Look at Different Sass Architectures](http://www.sitepoint.com/look-different-sass-architectures/)
+* [Architecture for a Sass Project](http://www.sitepoint.com/architecture-sass-project/)
+* [How to structure a Sass project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
