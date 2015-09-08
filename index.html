@@ -4,6 +4,20 @@ layout: default
 <div id="home">
   <section class="page-content wc-container">
       {% for post in site.posts limit:10 %}
+        {% if post.category %}
+          {% for site_category in site.data.categories %}
+            {% if site_category.slug == post.category %}
+                {% assign category = site_category %}
+            {% endif %}
+          {% endfor %}
+          {% if category %}
+            {% capture category_content %}
+              <a href="/{{ category.slug }}/">{{ category.name }}</a>
+            {% endcapture %}
+          {% endif %}
+        {% else %}
+          {% assign category_content = '' %}
+        {% endif %}
         <article class="post" itemscope itemtype="http://schema.org/Article" role="article">
           <h2 class="post-title" itemprop="name">
             <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
@@ -12,11 +26,12 @@ layout: default
           </h2>
 
           <p class="post-meta">
-            {% if (post.categories.size > 0 %}
-            <span class="categories" itemprop="about">
-              {{ post.categories | array_to_sentence_string }}
+            <span class="author" itemprop="author">
+              {{ post.post_author }}
             </span> |
-            {% endif %}
+            <span class="categories" itemprop="about">
+              {{ category_content }}
+            </span> |
             <time class="post-date" datetime="{{ post.date | date: "%Y-%m-%d" }}" itemprop="datePublished" pubdate>
               {{ post.date | date: "%b %-d, %Y" }}
             </time>
@@ -34,7 +49,7 @@ layout: default
   </section>
   <div class="post-footer">
     <div class="column-full">
-      <a href="{{ '/blog' | prepend: site.baseurl | prepend: site.url }}">Blog archive</a>
+      <a href="{{ '/blog' | prepend: site.baseurl | prepend: site.url }}">Todos os artigos</a>
     </div>
   </div>
 </div>

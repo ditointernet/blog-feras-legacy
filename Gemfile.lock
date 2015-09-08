@@ -128,7 +128,6 @@ PLATFORMS
 DEPENDENCIES
   github-pages (= 37)
   json
-  kramdown
   rake
 
 BUNDLED WITH

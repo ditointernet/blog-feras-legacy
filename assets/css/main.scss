@@ -66,6 +66,21 @@ body {
 }
 
 /* --------------------------------
+ Images
+--------------------------------- */
+.border-image {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #e3e3e3;
+  @include rounded(2px);
+}
+
+.full-image {
+  display: block;
+  width: 100%;
+}
+
+/* --------------------------------
 
  Small Typography
 
@@ -196,53 +211,8 @@ header.main-header, footer.main-footer {
   }
 }
 
-header.main-header {
-  color: $base-00;
-  border-top: 5px $base-00 solid;
-  background: #ecf0f1;
-
-  h1, h2 { text-align: center; color: inherit;}
-  a {
-    color: inherit;
-    &:hover, &:active, &:focus {
-      border-bottom-color: transparent;
-    }
-  }
-
-  ul {
-    width: 100%;
-    text-align: center;
-    padding: 15px;
-  }
-  ul li {
-    display: inline-block;
-    position:relative;
-    color: $base-08;
-  }
-
-  ul li span {
-    float: left;
-    display: inline-block;
-    width: 15px;
-  }
-
-  ul li a {
-    display:inline-block;
-    color: inherit;
-    border-bottom: 2px transparent solid;
-    padding-bottom:5px;
-    @include transition(all, .2s);
-    @include MQ(M) {
-      @include font-size(18px);
-    }
-    &:hover, &:focus, &:active {
-      border-bottom-color: inherit;
-    }
-  }
-}
-
 footer.main-footer {
-  background-color: #444;
+  background-color: #3a3f41;
   color: $base-07;
   border-bottom: 5px $base-00 solid;
   text-align: center;
@@ -261,16 +231,26 @@ footer.main-footer {
     }
   }
 
+  .credit-text {
+    text-align: center;
+    display: block;
+    @include MQ(M) {
+      display: inline-block;
+      float: left;
+    }
+  }
+
   .footer-logo {
     display: block;
     max-width: 140px;
     height: auto;
-    margin: 0 auto 6px auto;
+    margin: 0 auto 10px auto;
 
     @include MQ(M) {
       width: 100px;
       position: relative;
       top: -3px;
+      margin: 0;
       display: inline-block;
       vertical-align: middle;
     }
@@ -321,20 +301,37 @@ footer.main-footer {
   }
 
  ul.social-media {
-  text-align:left;
-  padding: 0 0 10px 0;
+  padding: 0;
+  margin: 20px 0 0 0;
+  text-align: center;
+  display: block;
+
+  @include MQ(M) {
+    display: inline-block;
+    float: right;
+    margin: 10px 0 0 0;
+  }
+
   li {
     display:inline-block;
+
+    @include MQ(M) {
+      float: left;
+      margin-left: 5px;
+    }
   }
+
   li > a {
     width: 32px;
     height: 32px;
-    background: $base-07;
     background-image: url("./images/socials-icons.svg");
     background-size: 224px 64px;
     border-radius: 0.25em;
-    @include transition(background-color 0.2s);
     border-bottom-color: transparent;
+    display: inline-block;
+    color: #fff;
+    @include rounded(50%);
+    @include transition();
 
     &:hover {
       background-color: $base-08;
@@ -342,9 +339,10 @@ footer.main-footer {
   }
 
   li a.twitter {
-    background-position: 0 0;
+    background-color: #00aced;
+    background-position: 0 -32px;
       &:hover {
-        background-position: 0 -32px;
+        background-position: 0 0;
     }
   }
 
@@ -356,9 +354,10 @@ footer.main-footer {
   }
 
   li a.facebook {
-    background-position: -64px 0;
+    background-color: #3b5998;
+    background-position: -64px -32px;
     &:hover {
-      background-position: -64px -32px;
+      background-position: -64px 0;
     }
   }
 
@@ -370,9 +369,10 @@ footer.main-footer {
   }
 
   li a.google {
-    background-position: -128px 0;
+    background-color: #d34836;
+    background-position: -128px -32px;
     &:hover {
-      background-position: -128px -32px;
+      background-position: -128px 0;
     }
   }
 
@@ -382,6 +382,10 @@ footer.main-footer {
         background-position: -196px -32px;
       }
     }
+  }
+
+  li a:hover {
+    background-color: #fff !important;
   }
 }
 
@@ -480,10 +484,6 @@ footer.main-footer {
     }
   }
 
-  img {
-    padding: 1em 0;
-  }
-
   p {
     margin: 0 0 1em 0;
   }
@@ -539,8 +539,6 @@ body.theme-base-01 {
   .page-content {
     h1, h2, h3, h4, h5, h6 { color: $base-01; }
   }
-
-
 }
 
 /* --------------------------------
@@ -550,14 +548,18 @@ body.theme-base-01 {
 --------------------------------- */
 
 header.main-header {
-  padding: 1em 0;
+  padding: 1em 0 0 0;
+  color: $base-00;
+  border-top: 5px $base-00 solid;
+  background: #fbfbfb;
+
   @include MQ(M) {
-    padding: 2em 0;
+    padding: 2em 0 0 0;
   }
 
   h1 {
     @include font('lato_bold');
-    font-size: 1.6em;
+    font-size: 1.5em;
     text-transform: uppercase;
     color: #555;
     display: block;
@@ -567,7 +569,60 @@ header.main-header {
     @include MQ(M) {
       display: inline-block;
       float: left;
-      margin: 29px 0 0 30px;
+      margin: 20px 0 0 30px;
+    }
+  }
+
+  .top-nav {
+    margin-top: 10px;
+    background-color: #fff;
+    margin-top: 2em;
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+
+    a {
+      font-size: 0.9em;
+      color: #adadad;
+      text-transform: uppercase;
+      display: block;
+      padding: 20px 30px;
+      border: 0;
+      border-bottom: 1px solid #e3e3e3;
+      @include font('lato_bold');
+      @include transition(.1s, ease);
+
+      @include MQ(M) {
+        border: 0;
+        border-left: 1px solid #e3e3e3;
+      }
+    }
+
+    li a:hover,
+    li.active a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    li {
+      display: block;
+
+      @include MQ(M) {
+        display: inline-block;
+        float: left;
+      }
+
+      &:last-child {
+        a {
+          border-bottom: 0;
+        }
+      }
     }
   }
 }
@@ -585,7 +640,7 @@ footer.main-footer {
 #logo {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
+  max-width: 260px;
   height: auto;
 
   @include MQ(M) {
@@ -725,6 +780,10 @@ Post styles
 
     &:hover {
       color: #000;
+    }
+
+    &.uppercase {
+      text-transform: uppercase;
     }
   }
 

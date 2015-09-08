@@ -2,7 +2,7 @@
 layout: post
 title:  "Introdução ao Design Sprint"
 date:   2015-08-24 09:00:00
-categories: ux
+category: ux
 post_author: Jordan Lenon
 comments: true
 meta_description: ''
@@ -27,7 +27,7 @@ O Design Sprint segue 6 passos que podem ser feitos em até 5 dias.
 
 * **Diverge**
   <br />
-  Exploramos quantas idéias forem possíveis.
+  Explorando quantas idéias forem possíveis.
 
 * **Decide**
   <br />
@@ -39,7 +39,7 @@ O Design Sprint segue 6 passos que podem ser feitos em até 5 dias.
 
 * **Validate**
   <br />
-  Testando as idéias com stackholders, profissionais e usuários.
+  Testando as idéias com stakeholders, profissionais e usuários.
 
 ## Quem organiza?
 **Sprint Master**: geralmente o líder da equipe de produto, um profissional com conhecimentos em métodos UX. Responsável por identificar o desafio, levá-lo a equipe e conduzir o sprint.
@@ -104,9 +104,7 @@ Se você conseguiu chegar até aqui, o seu sprint foi finalizado com sucesso! O 
 
 Tenha a mente aberta e teste para ver o que funciona pra você e sua equipe.
 
-Alguns materiais que podem auxiliar no estudo:
+**Alguns materiais que podem auxiliar no estudo:**
 
 * [Design Sprint Methods](https://developers.google.com/design-sprint/downloads/DesignSprintMethods.pdf)
-
 * [Product Design Sprint Material](https://github.com/thoughtbot/design-sprint)
-

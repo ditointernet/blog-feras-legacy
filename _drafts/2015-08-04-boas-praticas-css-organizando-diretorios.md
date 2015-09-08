@@ -2,7 +2,7 @@
 layout: post
 title:  "Boas práticas de CSS: Organizando os diretórios"
 date:   2015-08-04 09:00:00
-categories: frontend
+category: frontend
 post_author: Jordan Lenon
 comments: true
 meta_description: 'Boas práticas de CSS para organizar os seus assets e diretórios. Essa estrutura serve tanto para LESS quando para SASS'

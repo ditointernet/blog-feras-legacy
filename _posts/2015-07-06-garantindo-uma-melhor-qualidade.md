@@ -2,7 +2,7 @@
 layout: post
 title:  "Garantindo uma melhor qualidade de código"
 date:   2015-07-06 09:10:31
-categories: tecnologia
+category: tecnologia
 post_author: Sérgio Miranda
 comments: true
 ---
