@@ -2,7 +2,7 @@
 layout: post
 title:  "Realizando requisições paralelas"
 date:   2015-08-23 19:39:00
-categories: tecnologia
+category: tecnologia
 post_author: Victor Lellis
 comments: true
 ---
