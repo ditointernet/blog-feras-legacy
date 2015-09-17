@@ -11,10 +11,6 @@ Em um projeto recente, a nossa equipe estava verificando uma solução para otim
 
 O sistema realizava requisições JSON de forma síncrona para os provedores de serviço e surgiu a necessidade de realizar mudanças para que as requisições sejam realizadas de forma assíncrona, mas surgiu o problema de como seriam tratadas as respostas.
 
-
-O estudo para solucionar o problema
------------------------------------
-
 Para solucionar o problema foi verificado a abordagem baseada em _middleware_ para lidar com requisições HTTP no lado do servidor, o _middleware_ é um mediador entre as requisições e respostas.
 
 Baseado em estudos na documentação de dois Gems de ruby (**Faraday** e **Typhoeus**) foi verificado que com o **Faraday** com o _adapter_ **Typhoeus** é possível realizar paralelismo nas requisições e lidar com as respostas HTTP no lado do cliente usando uma pilha de _middleware_.
@@ -30,26 +26,19 @@ A interface [_Hydra_][hydra] gerencia as requisições HTTP paralelas do **Typho
 
 A concorrência pode ser modificada através do construtor de _Hydra_. As conexões persistentes são habilitadas por padrão desde que a connexão _curl_ da API tente reutilizar conexões existentes automaticamente.
 
-As vantagens
--------------
-
 A principal vantagem de se utilizar requisições paralelas com o **Typhoeus** é que a biblioteca _libcurl_ fica encarregada de realizar as requisições paralelas e retorna as respostas para o **Typhoeus**. O **Faraday** fica com o papel de entregar essas respostas ao _middleware_.
 
 No modo de concorrência, a biblioteca _libcurl_ fica responsável de executar a técnica _HTTP pipelining_, que é uma técnica para enviar requisições em uma única conexão TCP sem esperar pelas respostas correspondentes, resultando em uma melhoria dramática no ganho de performance.
 
 O _requestor_ do _libcurl_ armazena as respostas e entrega na ordem das requisições.
 
-
-Requisições síncronas e assíncronas por _pipelining_
------------------------------------------------------
-
 Abaixo segue o esquema de funcionamento de três requisições síncronas e assíncronas (com o método _pipelining_).
 
 ![Conexão síncrona vs pipelined](https://upload.wikimedia.org/wikipedia/commons/1/19/HTTP_pipelining2.svg)
 
 
-Desenvolvendo o código para requisição
----------------------------------------
+Código para requisição
+-----------------------
 
 Considerando o seguinte código em ruby:
 
