@@ -7,9 +7,6 @@ post_author: Victor Lellis
 comments: true
 ---
 
-O problema a ser solucionado
------------------------------
-
 Em um projeto recente, a nossa equipe estava verificando uma solução para otimizar o envio de notificações para nossos clientes através de vários provedores de serviço (e-mail, rede social e _push notification_).
 
 O sistema realizava requisições JSON de forma síncrona para os provedores de serviço e surgiu a necessidade de realizar mudanças para que as requisições sejam realizadas de forma assíncrona, mas surgiu o problema de como seriam tratadas as respostas.
