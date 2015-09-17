@@ -4,7 +4,7 @@ email: plataforma@dito.com.br
 description: > # this means to ignore newlines until "baseurl:"
   Compartilhamento de aprendizados e dúvidas da área de TI da Dito
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://ditointernet.github.io" # the base hostname & protocol for your site
+url: "http://feras.dito.com.br" # the base hostname & protocol for your site
 twitter_username: ditointernet
 github_username:  ditointernet
 
