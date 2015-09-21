@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Realizando requisições paralelas"
+title:  "Como aumentamos a performance de nossas requisições web"
 date:   2015-08-23 19:39:00
 category: tecnologia
 post_author: Victor Lellis
@@ -11,20 +11,20 @@ Em um projeto recente, a nossa equipe estava verificando uma solução para otim
 
 O sistema realizava requisições JSON de forma síncrona para os provedores de serviço e surgiu a necessidade de realizar mudanças para que as requisições sejam realizadas de forma assíncrona, mas surgiu o problema de como seriam tratadas as respostas.
 
-Para solucionar o problema foi verificado a abordagem baseada em _middleware_ para lidar com requisições HTTP no lado do servidor, o _middleware_ é um mediador entre as requisições e respostas.
+Para solucionar o problema foi verificado a abordagem baseada em _middleware_ para lidar com requisições HTTP no lado do servidor. O _middleware_ é um mediador entre as requisições e respostas.
 
-Baseado em estudos na documentação de dois Gems de ruby (**Faraday** e **Typhoeus**) foi verificado que com o **Faraday** com o _adapter_ **Typhoeus** é possível realizar paralelismo nas requisições e lidar com as respostas HTTP no lado do cliente usando uma pilha de _middleware_.
+Baseado em estudos na documentação de duas Gems de ruby (**Faraday** e **Typhoeus**) foi verificado que com o **Faraday** com o _adapter_ **Typhoeus** é possível realizar paralelismo nas requisições e lidar com as respostas HTTP no lado do cliente usando uma pilha de _middleware_.
 
-O [**Typhoeus**][typhoeus], um Gem desenvolvido em ruby, é utilizado para o cliente HTTP fazer requisições paralelas de alto desempenho. **Typhoeus** é um _wrapper_ para a _libcurl_, que é uma biblioteca madura e robusta em C para a realização de requisições HTTP com alto desempenho e foi projetada para ser totalmente _thread-safe_. O _libcurl_ permite:
+O [**Typhoeus**][typhoeus], uma Gem desenvolvida em ruby, é utilizado para o cliente HTTP fazer requisições paralelas de alto desempenho. **Typhoeus** é um _wrapper_ para a _libcurl_, que é uma biblioteca madura e robusta em C para a realização de requisições HTTP com alto desempenho e foi projetada para ser totalmente _thread-safe_. O _libcurl_ permite:
 
 - Habilitar transferências múltiplas simultaneamente na mesma _thread_;
 - Manipulação de dados baseados em eventos e escalar transferências de milhares de conexões paralelas.
 
-Já o [**Faraday**][faraday], outro Gem desenvolvido em ruby, é um cliente HTTP projetado para fornecer uma abstração consistente entre diferentes tipos de _apdapters_, como o Gem **Typhoeus** quanto o Gem **Net::Http**, por exemplo.
+Já o [**Faraday**][faraday], outra Gem desenvolvida em ruby, é um cliente HTTP projetado para fornecer uma abstração consistente entre diferentes tipos de _apdapters_, como a Gem **Typhoeus** quanto a Gem **Net::Http**, por exemplo.
 
 A interface [_Hydra_][hydra] gerencia as requisições HTTP paralelas do **Typhoeus**. Seu limite padrão de concorrência de parelelismo é 200 e quanto mais solicitações são enfileiradas, _Hydra_ irá salvá-las e iniciá-las a medida que as outras requisições forem finalizadas.
 
-A concorrência pode ser modificada através do construtor de _Hydra_. As conexões persistentes são habilitadas por padrão desde que a connexão _curl_ da API tente reutilizar conexões existentes automaticamente.
+A concorrência pode ser modificada através do construtor de _Hydra_. As conexões persistentes são habilitadas por padrão desde que a conexão _curl_ da API tente reutilizar conexões existentes automaticamente.
 
 A principal vantagem de se utilizar requisições paralelas com o **Typhoeus** é que a biblioteca _libcurl_ fica encarregada de realizar as requisições paralelas e retorna as respostas para o **Typhoeus**. O **Faraday** fica com o papel de entregar essas respostas ao _middleware_.
 
@@ -162,7 +162,7 @@ A variável _success_count_ é utilizada para verificar as requisições que for
 Resultado e comparação de velocidade
 -------------------------------------
 
-Foi verificado o retorno de 100 requisições com sucesso e foi utilizado o Gem [_benchmark-ips_][benchmark_ips] para medir a comparação de velocidade entre as requisições paralelas e sequenciais.
+Foi verificado o retorno de 100 requisições com sucesso e foi utilizado a Gem [_benchmark-ips_][benchmark_ips] para medir a comparação de velocidade entre as requisições paralelas e sequenciais.
 
 {% highlight ruby %}
 require 'benchmark/ips'
