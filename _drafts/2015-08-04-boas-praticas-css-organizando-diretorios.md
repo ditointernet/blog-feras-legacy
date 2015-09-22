@@ -7,8 +7,11 @@ post_author: Jordan Lenon
 comments: true
 meta_description: 'Boas práticas de CSS para organizar os seus assets e diretórios. Essa estrutura serve tanto para LESS quando para SASS'
 ---
+Ter um padrão de organização tanto de diretórios quanto de arquivos CSS é de fundamental importância para um projeto. Um projeto mal planejado poderá ter problemas com modularização de componentes, duplicação e dificuldades de manutenção.
 
-Vamos aprender algumas boas práticas para organizar os seus assets e diretórios. Irei mostrar alguns exemplos e explicar cada um deles. Essa estrutura serve tanto para **LESS** quanto para **SASS**.
+Vamos aprender algumas boas práticas para organizar os seus assets e diretórios de acordo com o que vemos em grandes projetos.
+
+Essa estrutura serve tanto para **LESS** quanto para **SASS**.
 
 ## Estrutura de diretórios
 {% highlight php %}
