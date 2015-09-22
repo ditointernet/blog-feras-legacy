@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Introdução ao Design Sprint"
+title:  "Como funciona o Design Sprint"
 date:   2015-08-24 09:00:00
 category: ux
 post_author: Jordan Lenon
 comments: true
-meta_description: ''
+meta_description: 'Design Sprint é um método desenvolvido no Google Ventures que busca resolver problemas específicos de um produto'
 ---
 
 Design Sprint é um método desenvolvido no [Google Ventures](http://gv.com/) que busca resolver problemas específicos de um produto, onde é possível testar e validar as questões levantadas. Ele é baseado em metodologia ágil e pode ser aplicado por equipes de qualquer tamanho.
