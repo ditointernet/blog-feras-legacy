@@ -75,6 +75,11 @@ body {
   @include rounded(2px);
 }
 
+.image-center {
+  display: block;
+  margin: 0 auto;
+}
+
 .full-image {
   display: block;
   width: 100%;
