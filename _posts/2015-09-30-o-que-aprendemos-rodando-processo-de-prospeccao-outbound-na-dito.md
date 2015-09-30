@@ -32,7 +32,7 @@ Ao longo desses 3 meses, pudemos rodar o processo de prospecção de forma siste
 
 Uma ferramenta eficiente para geração de leads – O titulo é auto explicativo, as poucas ferramentas dispostas ao trabalho ou são imprecisas, ou são muito caras (ou ambas!), o ideal seria um BuiltWith com preço de CrowdTask, com certeza o trabalho fica muito mais fluente quando se tem uma lista de nomes com as informações necessárias para contatar. Torna o trabalho rápido, tranquilo e mais eficiente.
 
-##### 2) Gerar interesse com um necessidade não reconhecida
+##### 2) Gerar interesse com uma necessidade não reconhecida
 
 A retenção de clientes, embora não desconhecida, é pouco mencionada e trabalhada no mercado brasileiro, o que acaba tornando o trabalho do profissional de Outbound Marketing na Dito um tanto quanto desafiador.
 
