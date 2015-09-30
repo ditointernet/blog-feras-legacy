@@ -8,7 +8,7 @@ comments: true
 meta_description: 'A retenção de clientes, embora não desconhecida, é pouco mencionada e trabalhada no mercado brasileiro, o que acaba tornando o trabalho do profissional do Outbound Marketing um tanto quanto desafiador, primeiro devido a falta de demanda e segundo devido ao desconhecimento do valor do produto (plataformas e ferramentas voltadas para o marketing de retenção) o que dificulta na precificação. O processo de prospecção outbound se dá basicamente em 7 etapas:'
 ---
 
-A retenção de clientes, embora não desconhecida, é pouco mencionada e trabalhada no mercado brasileiro, o que acaba tornando o trabalho do profissional do Outbound Marketing um tanto quanto desafiador, primeiro devido a falta de demanda e segundo devido ao desconhecimento do valor do produto (plataformas e ferramentas voltadas para o marketing de retenção) o que dificulta na precificação. O processo de prospecção outbound se dá basicamente em 7 etapas:
+A retenção de clientes, embora não desconhecida, é pouco mencionada e trabalhada no mercado brasileiro, o que acaba tornando o trabalho do profissional do Outbound Marketing um tanto quanto desafiador. O processo de prospecção outbound se dá basicamente em 7 etapas:
 
 * definição de perfil de clientes ideais;
 * busca de empresas com esse perfil;
