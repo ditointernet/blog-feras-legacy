@@ -109,7 +109,7 @@ Representação em UML
 Funcionamento
 --------------
 
-A classe _File_ é inicializada recebendo um hash de parâmetros. Um destes parâmetros é o formato desejado do arquivo de saída. O método _build_file_manipulator_ é responsável por instanciar e armazenar na variável de instância _@file_manipulator_ o objeto manipulador necessário para a geração, de acordo com o formato desejado.
+A classe _File_ é inicializada recebendo um hash de parâmetros. Um destes parâmetros é o formato desejado do arquivo de saída. O método _build_file_manipulator_ é responsável por instanciar em _@file_manipulator_ o objeto manipulador necessário para a geração, de acordo com o formato desejado.
 
 A classe _File_ desconhece os mecanismos de construção e inserção de linhas de cada tipo de arquivo, delegando para a instância do manipulador esta responsabilidade através de chamadas ao método _add_row_.
 
@@ -121,7 +121,7 @@ Numa funcionalidade simples como a geração de arquivos conseguimos destacar di
 * A classe _File_ possui um propósito bem específico. Sua finalidade é fornecer a interface para a geração dos arquivos através de seus métodos. Ao não assumir responsabilidades que  não lhe dizem respeito, ela torna-se coesa, delegando para as classes especialistas as funções que não lhe cabem - **_High Cohesion_**
 
 * _File_ é responsável por criar os objetos para cada tipo de exportação. É a classe mais indicada para realizar esta tarefa pois ela contém e utiliza tais objetos em seus métodos. Além disso ela possui a informação de qual extensão de arquivo foi solicitada.  - **_Creator_** e **_Information Expert_**
-É
+
 * Após a construção do manipulador (csv ou xlsx) a classe _File_ desconhece os mecanismos internos do mesmo. Cada classe manipulator pode possuir métodos privados adicionais e específicos para cada tipo de extensão desejada sem que a classe _File_ precise ser alterada para a obtenção do resultado esperado. - **_Low Coupling_**
 
 * Se desejarmos trabalhar com outra extensão de arquivos além das existentes, as alterações necessárias são relativamente simples. Basta criarmos a classe manipuladora (tal qual as existentes) com seus métodos específicos e realizarmos modificações no método _build_file_manipulator_, aproximando sua implementação do padrão [FactoryMethod](https://en.wikipedia.org/wiki/Factory_method_pattern).
