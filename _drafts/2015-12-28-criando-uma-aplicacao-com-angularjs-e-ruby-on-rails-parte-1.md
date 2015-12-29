@@ -7,7 +7,7 @@ post_author: Paulo Henrique Bruce
 comments: true
 ---
 
-Como o título já sugere, neste post eu explicarei uma maneira de criar uma aplicação com [AngularJS](https://angularjs.org/) com o Rails. Como o conteúdo ficou maior do que eu imaginava, eu decidi dividí-lo em duas partes. Portanto, neste post veremos:
+Como o título já sugere, neste post eu explicarei uma maneira de criar uma aplicação com [AngularJS](https://angularjs.org/) com o Rails. Como o conteúdo ficou maior do que eu imaginava, eu o dividi em duas partes. Portanto, neste post veremos:
 
     1. Criando e configurando o projeto Rails
     2. Configurando o AngularJS
