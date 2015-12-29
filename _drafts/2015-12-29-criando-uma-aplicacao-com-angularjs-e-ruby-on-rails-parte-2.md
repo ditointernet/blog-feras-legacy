@@ -304,6 +304,6 @@ Para construir os recursos de `edit` agora ficou fácil. Entre em `edit.js.coffe
 ] # RecipesEditController
 {% endhighlight %}
 
-Pronto! O Veganizze está pronto para uso. Espero ter ajudado. Qualquer dúvida ou sugestão, estou à disposição :).
+O Veganizze está pronto! Espero ter ajudado. Qualquer dúvida ou sugestão, estou à disposição :).
 
 

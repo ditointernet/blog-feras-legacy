@@ -54,11 +54,11 @@ Sem esquecer de rodar a _migration_: `rake db:migrate`. :)
 
 Agora vamos verificar se já está criando as receitas: `rails s`:
 
-![Index Veganizze](http://i.imgur.com/k7cRLTa.png){: .border-image .image-center}
+![Index Veganizze](http://i.imgur.com/k7cRLTa.png){: .border-image }
 
-![New Veganizze](http://i.imgur.com/L1xZ5aR.png){: .border-image .image-center}
+![New Veganizze](http://i.imgur.com/L1xZ5aR.png){: .border-image }
 
-![Index Veganizze](http://i.imgur.com/1YRQoY1.png){: .border-image .image-center}
+![Index Veganizze](http://i.imgur.com/1YRQoY1.png){: .border-image }
 
 Tudo ok!
 
@@ -227,7 +227,7 @@ Em `ng-controller="ApplicationCtrl"` atribuimos o nosso controller principal. Co
 
 Vamos testar e ver se a página está renderizando "lorem ipsum":
 
-![Examples ui-router states](http://i.imgur.com/CMBQ9bo.png){: .border-image .image-center}
+![Examples ui-router states](http://i.imgur.com/CMBQ9bo.png){: .border-image }
 
 Voltando ao arquivo `app/views/application.html.erb`:
 
@@ -319,7 +319,7 @@ $stateProvider
 
 Reparem que criei um estado abstrato chamado `recipes`, que servirá como um outro bootstrap para os conteúdos pertencentes ao nó `recipes`. Isso significa que existirá um estado com um conteúdo estático com outros estados dentro dele. Para facilitar a compreensão veja o desenho abaixo:
 
-![Examples ui-router states](http://i.imgur.com/25dgGGB.png){: .border-image .image-center}
+![Examples ui-router states](http://i.imgur.com/25dgGGB.png){: .border-image }
 
 No exemplo mostrado acima, o menu (de cor cinza escuro) é o estado abstrato que, ao mudar de página (estado), continua estático e o conteúdo de cor cinza claro muda de acordo com a url. Isso sem precisar recarregar a página.
 
