@@ -118,23 +118,23 @@ end
 Vamos preparar os controllers do Angular:
 
 {% highlight coffee %}
-@app.controller 'RecipesCtrl', ['$scope', ($scope) ->
+@app.controller 'RecipesCtrl', [ ->
   console.log "Bootstrap"
 ] # RecipesCtrl
 
-@app.controller 'RecipesIndexCtrl', ['$scope', ($scope) ->
+@app.controller 'RecipesIndexCtrl', [ ->
   console.log "Página index"
 ] # RecipesIndexCtrl
 
-@app.controller 'RecipeShowController', ['$scope', ($scope) ->
+@app.controller 'RecipeShowController', [ ->
   console.log "Página show"
 ] # RecipeShowController
 
-@app.controller 'RecipesNewCtrl', ['$scope', ($scope) ->
+@app.controller 'RecipesNewCtrl', [ ->
   console.log "Página new"
 ] # RecipesNewCtrl
 
-@app.controller 'RecipesEditController', ['$scope', ($scope) ->
+@app.controller 'RecipesEditController', [ ->
   console.log "Página edit"
 ] # RecipesEditController
 {% endhighlight %}
