@@ -7,14 +7,15 @@ post_author: Paulo Henrique Bruce
 comments: true
 ---
 
-Como o título já sugere, neste post eu explicarei uma maneira de criar uma aplicação com [AngularJS](https://angularjs.org/) com o Rails. Como o conteúdo ficou relativamente grande, decidi dividí-lo em duas partes. Portanto, neste post veremos:
+Como o título já sugere, neste post eu explicarei uma maneira de criar uma aplicação com [AngularJS](https://angularjs.org/) com o Rails. Como o conteúdo ficou maior do que eu imaginava, eu decidi dividí-lo em duas partes. Portanto, neste post veremos:
 
     1. Criando e configurando o projeto Rails
     2. Configurando o AngularJS
 
 E no próximo post, veremos:
 
-    3. Consumindo os dados no AngularJS
+    2. Preparando a Receita...
+    3. Consumindo os dados
 
 ## _1. Criando o projeto Rails_
 O nosso app se chamará **_Veganizze_** e será um CRUD de receitas veganas. Não usaremos testes e usaremos o MySQL como o banco de dados, portanto, o nosso primeiro comando será `rails new veganizze -T -d mysql`.
@@ -34,6 +35,13 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery',  '~> 2.0.0'
   gem 'rails-assets-angular', '~> 1.4.0'
 end
+{% endhighlight %}
+
+Por enquanto, deixaremos o arquivo application.js.coffee assim:
+
+{% highlight coffee %}
+//= require jquery
+//= require angular
 {% endhighlight %}
 
 Ok. Agora vamos criar um scaffold para as receitas:
@@ -100,7 +108,7 @@ Para começar, vamos criar a estrutura dos arquivos do Angular. Dentro do diret�
                 csrf.js.coffee
                 routes.js.coffee
 
-Por enquanto, deixaremos o arquivo application.js.coffee assim:
+Vamos mudar o arquivo application.js.coffee agora:
 
 {% highlight coffee %}
 //= require jquery
@@ -159,7 +167,6 @@ No arquivo `routes.js.coffee`, configure:
 
   $stateProvider
     .state 'home',
-      abstract: true
       url: ''
       views:
         '':
@@ -179,6 +186,8 @@ Precisaremos definir o nosso bootstrap no ApplicationController (`app/controller
 def home
 end
 {% endhighlight %}
+
+Lembre-se de criar o arquivo `home.html.erb` dentro de `app/views/application`.
 
 Criar a rota do bootstrap (`config/routes.rb`):
 
@@ -211,7 +220,7 @@ Vamos ao `app/views/application.html.erb` e definir o aplicativo e o controller:
 Em `ng-controller="ApplicationCtrl"` atribuimos o nosso controller principal. Como ainda não temos esse arquivo, então vamos criar (`app/assets/javascripts/app/controllers/applicationCtrl.js.coffee`):
 
 {% highlight coffee %}
-@app.controller 'AlicationCtrl', ['$scope', ($scope) ->
+@app.controller 'ApplicationCtrl', ['$scope', ($scope) ->
   $scope.test = "lorem ipsum"
 ] # ApplicationCtrl
 {% endhighlight %}
@@ -326,6 +335,19 @@ resources :recipes do
 end
 {% endhighlight %}
 
+Sem esquecer de criar a action em `app/controllers/recipes_controller.rb`:
+
+{% highlight ruby %}
+def layout
+end
+{% endhighlight %}
+
+E a página `layout.html.erb` em `app/views/recipes/` com o seguinte conteúdo:
+
+{% highlight html %}
+<div ui-view="recipes"></div>
+{% endhighlight %}
+
 Agora vamos criar a seguinte estrutura dentro do diretório `app/assets/javascripts/app/`:
 
         app
@@ -336,6 +358,7 @@ Agora vamos criar a seguinte estrutura dentro do diretório `app/assets/javascri
             │       formCtrl.js.coffee
             │       newCtrl.js.coffee
             │       editCtrl.js.coffee
+            │       recipesCtrl.js.coffee
             ├───directives
             ├───factories
             ├───filters
