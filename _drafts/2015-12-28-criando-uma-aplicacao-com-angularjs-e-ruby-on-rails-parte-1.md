@@ -103,7 +103,7 @@ O módulo principal da aplicação ficará dentro do arquivo `app/assets/javascr
 
 ### Rotas
 
-Nós iremos usar o [ui-router](https://github.com/angular-ui/ui-router/wiki) para controlar as rotas do lado do cliente. Ele é um _framework_ para AngularJS que permite que você organize sua aplicação por meio de estados declarados no nó `state`. Para saber mais sobre o ui-router, clique [aqui](https://github.com/angular-ui/ui-router/wiki).
+Nós iremos usar o [ui-router](https://github.com/angular-ui/ui-router/wiki) para controlar as rotas do lado do cliente. Ele é um _framework_ para AngularJS que permite que você organize sua aplicação por meio de estados. Diferente da abortagem tradicional que é organizada por meio de `urls`. Para saber mais sobre o ui-router, clique [aqui](https://github.com/angular-ui/ui-router/wiki).
 
 Vamos adicionar o ui-router em nosso projeto. Primeiro, vamos acrescentar o ui-router na Gemfile:
 
