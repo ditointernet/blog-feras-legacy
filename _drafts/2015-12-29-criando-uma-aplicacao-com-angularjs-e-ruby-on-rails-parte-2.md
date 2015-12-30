@@ -2,14 +2,14 @@
 layout: post
 title:  "Criando uma aplicação com AngularJS e Ruby on Rails - parte 02"
 date:   2015-12-29 12:42:00
-category: tecnologia
+category: frontend
 post_author: Paulo Henrique Bruce
 comments: true
 ---
 
 No post [anterior](http://feras.dito.com.br/posts/2015-12-29-criando-uma-aplicacao-com-angularjs-e-ruby-on-rails-parte-2/) falei como criar e configurar o projeto no Rails adaptado para Angular e mostrei como configurar a aplicação no AngularJS. Neste post, irei mostrar uma simples maneira de consumir os dados do Rails através do AngularJS. Bora lá!
 
-## _3. Preparando a Receita..._
+## _3. "Preparando a Receita"_
 
 No arquivo `routes.js.coffee`, vamos injetar o service `$locationProvider` e adicionar o seguinte trecho:
 
@@ -22,7 +22,13 @@ $locationProvider
 
 O código acima impede que o angular faça o uso do [Hashbang Mode](https://docs.angularjs.org/guide/$location) (#!) e evita que temos que configurar as urls pelo server-side.
 
-Para organizar as requisições client-side, vamos ao diretório `app/asssets/javascripts/recipes/factories` e criar um arquivo chamado `recipeFactory.js.coffee` com o seguinte conteúdo:
+Agora em `application.html.erb`, adicione a tag `<base>` na head:
+
+{% highlight html %}
+<base href="/">
+{% endhighlight %}
+
+Para organizar as requisições client-side, vamos ao diretório `app/assets/javascripts/app/pages/recipes/factories` e criar um arquivo chamado `recipeFactory.js.coffee` com o seguinte conteúdo:
 
 {% highlight coffee %}
 @app.factory 'RecipeFactory', ['$http', '$q', ($http, $q) ->
@@ -118,22 +124,27 @@ end
 Vamos preparar os controllers do Angular:
 
 {% highlight coffee %}
+# Arquivo recipesCtrl.js.coffee
 @app.controller 'RecipesCtrl', [ ->
   console.log "Bootstrap"
 ] # RecipesCtrl
 
+# Arquivo indexCtrl.js.coffee
 @app.controller 'RecipesIndexCtrl', [ ->
   console.log "Página index"
 ] # RecipesIndexCtrl
 
+# Arquivo showCtrl.js.coffee
 @app.controller 'RecipeShowController', [ ->
   console.log "Página show"
 ] # RecipeShowController
 
+# Arquivo newCtrl.js.coffee
 @app.controller 'RecipesNewCtrl', [ ->
   console.log "Página new"
 ] # RecipesNewCtrl
 
+# Arquivo editCtrl.js.coffee
 @app.controller 'RecipesEditController', [ ->
   console.log "Página edit"
 ] # RecipesEditController
@@ -205,9 +216,9 @@ E no arquivo `index.html.erb`, vamos consumir os dados:
 
   <tbody>
     <tr ng-repeat="recipe in allRecipes">
-      <td>{{ recipe.title }}</td>
-      <td>{{ recipe.ingredients }}</td>
-      <td>{{ recipe.directions }}</td>
+      <td>{% raw %}{{ recipe.title }}{% endraw %}</td>
+      <td>{% raw %}{{ recipe.ingredients }}{% endraw %}</td>
+      <td>{% raw %}{{ recipe.directions }}{% endraw %}</td>
       <td><a href="javascript:void(0)" ui-sref="recipes.show({ id: recipe.id })">Show</td>
       <td><a href="javascript:void(0)" ui-sref="recipes.edit({ id: recipe.id })">Edit</td>
       <td><a href="javascript:void(0)" ng-click="destroyRecipe(recipe.id, $index)">Destroy</td>
@@ -219,6 +230,8 @@ E no arquivo `index.html.erb`, vamos consumir os dados:
 
 <a href="javascript:void(0)" ui-sref="recipes.new">New Recipe</a>
 {% endhighlight %}
+
+Antes de ir para a próxima página, vamos voltar em `application_controller.rb` e adicionar a seguinte linha: `skip_before_action :verify_authenticity_token`. Essa linha possibilita que deletemos as receitas.
 
 Agora vamos configurar a página de `show`. Em `show.js.coffee`, altere o código para isso:
 
@@ -237,17 +250,17 @@ E em `show.html.erb`, altere para isso:
 {% highlight html %}
 <p>
   <strong>Title:</strong>
-  {{ currentRecipe.title }}
+  {% raw %}{{ currentRecipe.title }}{% endraw %}
 </p>
 
 <p>
   <strong>Ingredients:</strong>
-  {{ currentRecipe.ingredients }}
+  {% raw %}{{ currentRecipe.ingredients }}{% endraw %}
 </p>
 
 <p>
   <strong>Directions:</strong>
-  {{ currentRecipe.directions }}
+  {% raw %}{{ currentRecipe.directions }}{% endraw %}
 </p>
 
 <a href="javascript:void(0)" ui-sref="recipes.edit({ id: currentRecipe.id })">Edit</a>
@@ -302,6 +315,17 @@ Para construir os recursos de `edit` agora ficou fácil. Entre em `edit.js.coffe
     # create
   # commitRecipe
 ] # RecipesEditController
+{% endhighlight %}
+
+E para finalizar, vamos deixar a página `edit.html.erb` assim:
+
+{% highlight html %}
+<h1>Editing recipe</h1>
+
+<%= render 'form' %>
+
+<a href="javascript:void(0)" ui-sref="recipes.show({ id: currentRecipe.id })">Show</a>
+<a href="javascript:void(0)" ui-sref="recipes.index">Back</a>
 {% endhighlight %}
 
 O Veganizze está pronto! Espero ter ajudado. Qualquer dúvida ou sugestão, estou à disposição :).
