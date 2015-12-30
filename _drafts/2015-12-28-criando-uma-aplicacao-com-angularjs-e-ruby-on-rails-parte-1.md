@@ -164,8 +164,6 @@ root 'application#home'
 get '*', to: 'application#home'
 {% endhighlight %}
 
-E criar o arquivo `home` no diretório `app/views/application/home.html.erb`.
-
 Agora vamos configurar a action home no `application_controller.rb`:
 
 {% highlight ruby %}
