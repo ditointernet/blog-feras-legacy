@@ -18,7 +18,7 @@ E no próximo post, veremos:
     3. Consumindo os dados
 
 ## _1. Criando o projeto Rails_
-Faremos um app que se chamará **_Veganizze_** e será um CRUD de receitas veganas. Neste usaremos o MySQL como o banco de dados: `rails new veganizze -T -d mysql`.
+Faremos um app que se chamará **_Veganizze_** e será um CRUD de receitas veganas. Neste exemplo, usaremos o MySQL como o banco de dados: `rails new veganizze -T -d mysql`.
 
 Adicione ao `Gemfile`:
 
