@@ -174,7 +174,7 @@ end
 
 Mais tarde voltaremos a falar sobre as rotas. Agora iremos configurar o nosso layout da aplicação, onde será renderizado o conteúdo do bootstrap.
 
-Vamos ao `app/views/layouts/application.html.erb` e definir o aplicativo e o controller:
+Vamos ao `app/views/layouts/application.html.erb` e definir o aplicativo e o controller da aplicação:
 
 {% highlight html %}
 <!DOCTYPE html>
