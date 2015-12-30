@@ -29,7 +29,7 @@ source 'https://rails-assets.org' do
 end
 {% endhighlight %}
 
-E depois, rodar o `bundle` no terminal.
+E depois, rode `bundle` no terminal.
 
 Por enquanto, deixaremos o arquivo `application.js` assim:
 
@@ -44,7 +44,7 @@ Ok. Agora vamos criar um scaffold para as receitas:
 rails g scaffold recipe title:string ingredients:text directions:text --no-helper --no-assets
 {% endhighlight %}
 
-Sem esquecer criar e rodar a _migration_: `rake db:create` e `rake db:migrate`. :)
+Sem esquecer criar o banco de dados e rodar a _migration_: `rake db:create` e `rake db:migrate`. :)
 
 No arquivo `routes.rb`, configuraremos o root:
 
