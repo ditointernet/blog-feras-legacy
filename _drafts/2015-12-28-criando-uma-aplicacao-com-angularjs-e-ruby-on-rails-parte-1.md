@@ -157,7 +157,7 @@ end
 
 Lembre-se de criar a pasta `application` dentro de `app/views` e o arquivo `home.html.erb` dentro dela.
 
-Criar a rota do bootstrap (`config/routes.rb`) e alterar o root:
+E criar a rota do bootstrap (`config/routes.rb`) e alterar o root:
 
 {% highlight ruby %}
 root 'application#home'
