@@ -204,7 +204,7 @@ Vamos ver se a página está renderizando "lorem ipsum":
 
 ![Examples ui-router states](http://i.imgur.com/CMBQ9bo.png){: .border-image }
 
-Voltando ao arquivo `app/views/application.html.erb`:
+Voltando ao arquivo `app/views/layouts/application.html.erb`:
 
 {% highlight html %}
 <!DOCTYPE html>
