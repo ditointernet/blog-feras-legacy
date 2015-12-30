@@ -344,4 +344,4 @@ Agora vamos ajustar a estrutura dos nossos assets (`app/assets/javascripts/app/`
             └───models
             app.js.coffee
 
-No próximo e último post, eu mostrarei como consumir os dados do Rails através do AngularJS. Até a próxima :)
+No [próximo e último post](http://feras.dito.com.br/posts/2015-12-29-criando-uma-aplicacao-com-angularjs-e-ruby-on-rails-parte-2/), eu mostrarei como consumir os dados do Rails através do AngularJS. Até a próxima :)
