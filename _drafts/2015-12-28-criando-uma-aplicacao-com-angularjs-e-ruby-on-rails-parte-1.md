@@ -315,31 +315,23 @@ E a página `layout.html.erb` em `app/views/recipes/` com o seguinte conteúdo:
 <div ui-view="recipes"></div>
 {% endhighlight %}
 
-Agora vamos ajustar a estrutura dos nossos assets (`app/assets/javascripts/app/`):
+Agora vamos ajustar a estrutura dos nossos assets. Dentro do diretório `app/assets/javascripts/app/pages` deixe assim:
 
-        app
-        ├───controllers
-        │       applicationCtrl.js.coffee
-        ├───directives
-        ├───factories
-        ├───filters
-        ├───pages
-        |   └───recipes
-        │       ├───controllers
-        │       │       indexCtrl.js.coffee
-        │       │       showCtrl.js.coffee
-        │       │       formCtrl.js.coffee
-        │       │       newCtrl.js.coffee
-        │       │       editCtrl.js.coffee
-        │       │       recipesCtrl.js.coffe
-        │       ├───directives
-        │       ├───factories
-        │       ├───filters
-        │       └───services
-        │           └───models
-        |           recipes.js.coffee
-        └───services
-            └───models
-            app.js.coffee
+
+      pages
+      └───recipes
+          ├───controllers
+          │    indexCtrl.js.coffee
+          │    showCtrl.js.coffee
+          │    formCtrl.js.coffee
+          │    newCtrl.js.coffee
+          │    editCtrl.js.coffee
+          │   recipesCtrl.js.coffe
+          ├───directives
+          ├───factories
+          ├───filters
+          └───services
+              └───models
+              recipes.js.coffee
 
 No [próximo e último post](http://feras.dito.com.br/posts/2015-12-29-criando-uma-aplicacao-com-angularjs-e-ruby-on-rails-parte-2/), eu mostrarei como consumir os dados do Rails através do AngularJS. Até a próxima :)
