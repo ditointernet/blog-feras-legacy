@@ -31,7 +31,7 @@ end
 
 E depois, rodar o `bundle` no terminal.
 
-Por enquanto, deixaremos o arquivo application.js.coffee assim:
+Por enquanto, deixaremos o arquivo `application.js` assim:
 
 {% highlight coffee %}
 //= require jquery
@@ -66,7 +66,7 @@ Tudo ok!
 Para começar, vamos criar a estrutura dos arquivos do Angular. Dentro do diretório `app/assets/javascripts`, deixaremos assim:
 
         javascripts
-        │   application.js.coffee
+        │   application.js
         ├───app
         │   ├───controllers
         │   ├───directives
@@ -79,7 +79,7 @@ Para começar, vamos criar a estrutura dos arquivos do Angular. Dentro do diret�
         └───config
                 routes.js.coffee
 
-Vamos mudar o arquivo application.js.coffee agora:
+Vamos mudar o arquivo application.js agora:
 
 {% highlight coffee %}
 //= require jquery
@@ -111,7 +111,7 @@ Vamos adicionar o ui-router em nosso projeto. Primeiro, vamos acrescentar o ui-r
   gem 'rails-assets-ui-router', '~> 0.2.0'
 {% endhighlight %}
 
-No arquivo `application.js.coffee`, adicione o `ui-router`:
+No arquivo `application.js`, adicione o `ui-router`:
 
 {% highlight coffee %}
 //= require angular
@@ -155,7 +155,7 @@ def home
 end
 {% endhighlight %}
 
-Lembre-se de criar o arquivo `home.html.erb` dentro de `app/views/application`.
+Lembre-se de criar a pasta `application` dentro de `app/views` e o arquivo `home.html.erb` dentro dela.
 
 Criar a rota do bootstrap (`config/routes.rb`) e alterar o root:
 
@@ -176,7 +176,7 @@ end
 
 Mais tarde voltaremos a falar sobre as rotas. Agora iremos configurar o nosso layout da aplicação, onde será renderizado o conteúdo do bootstrap.
 
-Vamos ao `app/views/application.html.erb` e definir o aplicativo e o controller:
+Vamos ao `app/views/layouts/application.html.erb` e definir o aplicativo e o controller:
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -320,20 +320,28 @@ E a página `layout.html.erb` em `app/views/recipes/` com o seguinte conteúdo:
 Agora vamos ajustar a estrutura dos nossos assets (`app/assets/javascripts/app/`):
 
         app
-        └───recipes
-            ├───controllers
-            │       applicationCtrl.js.coffee
-            ├───directives
-            ├───factories
-            ├───filters
-            ├───pages
-            |   └───recipes
-            │           indexCtrl.js.coffee
-            │           showCtrl.js.coffee
-            │           formCtrl.js.coffee
-            │           newCtrl.js.coffee
-            │           editCtrl.js.coffee
-            └───services
-                └───models
+        ├───controllers
+        │       applicationCtrl.js.coffee
+        ├───directives
+        ├───factories
+        ├───filters
+        ├───pages
+        |   └───recipes
+        │       ├───controllers
+        │       │       indexCtrl.js.coffee
+        │       │       showCtrl.js.coffee
+        │       │       formCtrl.js.coffee
+        │       │       newCtrl.js.coffee
+        │       │       editCtrl.js.coffee
+        │       │       recipesCtrl.js.coffe
+        │       ├───directives
+        │       ├───factories
+        │       ├───filters
+        │       └───services
+        │           └───models
+        |           recipes.js.coffee
+        └───services
+            └───models
+            app.js.coffee
 
 No próximo e último post, eu mostrarei como consumir os dados do Rails através do AngularJS. Até a próxima :)

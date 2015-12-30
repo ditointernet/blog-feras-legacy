@@ -11,18 +11,23 @@ No post [anterior](http://feras.dito.com.br/posts/2015-12-29-criando-uma-aplicac
 
 ## _3. "Preparando a Receita"_
 
-No arquivo `routes.js.coffee`, vamos injetar o service `$locationProvider` e adicionar o seguinte trecho:
+No arquivo `routes.js.coffee`, vamos injetar o service `$locationProvider` e adicionar mais algumas configurações:
 
 {% highlight coffee %}
-$locationProvider
-  .html5Mode(true)
-  .hashPrefix('!')
-# $locationProvider
+# Injeção do $locationProvider:
+@app.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) ->
+  ...
+
+  # Trecho a ser adicionado
+  $locationProvider
+    .html5Mode(true)
+    .hashPrefix('!')
+  # $locationProvider
 {% endhighlight %}
 
 O código acima impede que o angular faça o uso do [Hashbang Mode](https://docs.angularjs.org/guide/$location) (#!) e evita que temos que configurar as urls pelo server-side.
 
-Agora em `application.html.erb`, adicione a tag `<base>` na head:
+Agora em `application.html.erb`, adicione a tag `<base>` dentro de `<head>`:
 
 {% highlight html %}
 <base href="/">
@@ -111,12 +116,9 @@ def update
   @recipe = Recipe.find(params[:id])
 
   if @recipe.update_attributes(recipe_params)
-    respond_to do |format|
-      format.html
-      format.json { render json: @recipe }
-    end
+    render json: @recipe
   else
-    render action: 'edit'
+    render json: { error: true }
   end
 end
 {% endhighlight %}
@@ -171,7 +173,7 @@ Tudo certo! Vamos finalmente puxar os dados das receitas. Vamos começar pelo `r
 ] # RecipesCtrl
 {% endhighlight %}
 
-No arquivo `index.js.coffee`, vamos puxar as informações da index e colocar dentro de `allRecipes` e também criar um método para deletar uma receita:
+No arquivo `indexCtrl.js.coffee`, vamos puxar as informações da index e colocar dentro de `allRecipes` e também criar um método para deletar uma receita:
 
 {% highlight coffee %}
 @app.controller 'RecipesIndexCtrl', ['$scope', '$rootScope', 'RecipeFactory', ($scope, $rootScope, RecipeFactory) ->
@@ -233,7 +235,7 @@ E no arquivo `index.html.erb`, vamos consumir os dados:
 
 Antes de ir para a próxima página, vamos voltar em `application_controller.rb` e adicionar a seguinte linha: `skip_before_action :verify_authenticity_token`. Essa linha possibilita que deletemos as receitas.
 
-Agora vamos configurar a página de `show`. Em `show.js.coffee`, altere o código para isso:
+Agora vamos configurar a página de `show`. Em `showCtrl.js.coffee`, altere o código para isso:
 
 {% highlight coffee %}
 @app.controller 'RecipeShowController', ['$rootScope', '$stateParams', 'RecipeFactory', ($rootScope, $stateParams, RecipeFactory) ->
@@ -267,7 +269,7 @@ E em `show.html.erb`, altere para isso:
 <a href="javascript:void(0)" ui-sref="recipes.index">Back</a>
 {% endhighlight %}
 
-Vamos agora construir os recursos necessários para a página `new`. Em `new.js.coffee`, altere o código para:
+Vamos agora construir os recursos necessários para a página `new`. Em `newCtrl.js.coffee`, altere o código para:
 
 {% highlight coffee %}
 @app.controller 'RecipesNewCtrl', ['$scope', '$rootScope', '$state', 'RecipeFactory', ($scope, $rootScope, $state, RecipeFactory) ->
@@ -296,7 +298,7 @@ Em `new.html.erb`, mude para:
 <a href="javascript:void(0)" ui-sref="recipes.index">Back</a>
 {% endhighlight %}
 
-Para construir os recursos de `edit` agora ficou fácil. Entre em `edit.js.coffee` e defina `currentRecipe` novamente. Não se esqueça de criar um método para atualizar a receita:
+Para construir os recursos de `edit` agora ficou fácil. Entre em `editCtrl.js.coffee` e defina `currentRecipe` novamente. Não se esqueça de criar um método para atualizar a receita:
 
 {% highlight coffee %}
 @app.controller 'RecipesEditController', ['$scope', '$rootScope', '$state', '$stateParams', 'RecipeFactory', ($scope, $rootScope, $state, $stateParams, RecipeFactory) ->
@@ -317,7 +319,7 @@ Para construir os recursos de `edit` agora ficou fácil. Entre em `edit.js.coffe
 ] # RecipesEditController
 {% endhighlight %}
 
-E para finalizar, vamos deixar a página `edit.html.erb` assim:
+E para finalizar, vamos deixar a página `editCtrl.html.erb` assim:
 
 {% highlight html %}
 <h1>Editing recipe</h1>
