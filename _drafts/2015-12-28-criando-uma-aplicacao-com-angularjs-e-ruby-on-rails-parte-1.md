@@ -7,17 +7,19 @@ post_author: Paulo Henrique Bruce
 comments: true
 ---
 
-Neste post eu explicarei uma maneira de criar uma aplicação com [AngularJS](https://angularjs.org/) com o [Rails](http://rubyonrails.org/). Como o conteúdo ficou maior do que planejado, eu o dividi em duas partes. Neste post nós veremos:
+O objetivo deste post é apresentar uma maneira de criar uma aplicação utilizando [AngularJS](https://angularjs.org/) e [Ruby on Rails](http://rubyonrails.org/). Como o conteúdo ficou maior do que pensei, eu o dividi em duas partes. Neste post você verá:
 
-    1. Criando e configurando o projeto Rails
-    2. Configurando o AngularJS
+_1 - Criando e configurando o projeto Rails_
+<br>
+_2 - Configurando o AngularJS_
 
 E no próximo post, veremos:
 
-    2. "Preparando a Receita"
-    3. Consumindo os dados
+_2 - "Preparando a Receita"_
+<br>
+_3 - Consumindo os dados_
 
-## _1. Criando o projeto Rails_
+## _1 - Criando o projeto Rails_
 Faremos um app que se chamará **_Veganizze_** e será um CRUD de receitas veganas. Neste exemplo, usaremos o MySQL como o banco de dados: `rails new veganizze -T -d mysql`.
 
 Adicione ao `Gemfile`:
@@ -46,7 +48,7 @@ rails g scaffold recipe title:string ingredients:text directions:text --no-helpe
 
 Sem esquecer criar o banco de dados e rodar a _migration_: `rake db:create` e `rake db:migrate`. :)
 
-No arquivo `routes.rb`, configuraremos o root:
+No arquivo `routes.rb`, configuraremos o nosso root:
 
 {% highlight ruby %}
 root 'recipes#index'
@@ -61,7 +63,7 @@ Agora vamos verificar se já está criando as receitas: `rails s`:
 
 Tudo ok!
 
-## _2. Configurando o AngularJS_
+## _2 - Configurando o AngularJS_
 
 Para começar, vamos criar a estrutura dos arquivos do Angular. Dentro do diretório `app/assets/javascripts`, deixaremos assim:
 
@@ -79,7 +81,7 @@ Para começar, vamos criar a estrutura dos arquivos do Angular. Dentro do diret�
         └───config
                 routes.js.coffee
 
-Vamos mudar o arquivo application.js agora:
+De volta ao arquivo `application.js`:
 
 {% highlight coffee %}
 //= require jquery
@@ -95,7 +97,7 @@ Vamos mudar o arquivo application.js agora:
 //= require_tree ./app/pages/
 {% endhighlight %}
 
-O módulo principal da aplicação ficará dentro do arquivo `app/assets/javascripts/app/app.js.coffee`:
+O módulo principal da aplicação ficará dentro de `app/assets/javascripts/app/app.js.coffee`:
 
 {% highlight coffee %}
 @app = angular.module 'Veganizze'
@@ -103,34 +105,36 @@ O módulo principal da aplicação ficará dentro do arquivo `app/assets/javascr
 
 ### Rotas
 
-Nós iremos usar o [ui-router](https://github.com/angular-ui/ui-router/wiki) para controlar as rotas do lado do cliente. Ele é um _framework_ para AngularJS que permite que você organize sua aplicação por meio de estados. Diferente da abortagem tradicional que é organizada por meio de `urls`. Para saber mais sobre o ui-router, clique [aqui](https://github.com/angular-ui/ui-router/wiki).
+Nós vamos usar o [ui-router](https://github.com/angular-ui/ui-router/wiki) para controlar as rotas do lado do cliente. Ele é um _framework_ para AngularJS que permite que você organize sua interface por meio do conceito de [state machine](https://en.wikipedia.org/wiki/Finite-state_machine). Diferente da abortagem tradicional que é organizada por meio de `urls`. Para saber mais sobre o ui-router, clique [aqui](https://github.com/angular-ui/ui-router/wiki).
 
-Vamos adicionar o ui-router em nosso projeto. Primeiro, vamos acrescentar o ui-router na Gemfile:
+Então vamos adicionar o `ui-router` em nosso projeto. Primeiro, vamos ao `Gemfile`:
 
 {% highlight ruby %}
-  gem 'rails-assets-ui-router', '~> 0.2.0'
+gem 'rails-assets-ui-router', '~> 0.2.0'
 {% endhighlight %}
 
-No arquivo `application.js`, adicione o `ui-router`:
+No arquivo `application.js`, vamos adicionar o `ui-router`:
 
 {% highlight coffee %}
 //= require angular
 //= require ui-router
 {% endhighlight %}
 
-Em seguida, vamos injetar o ui-router no nosso módulo principal (`app/assets/javascripts/app/app.js.coffee`):
+Em seguida, vamos injetar o ui-router no nosso módulo principal:
 
 {% highlight coffee %}
+# app/assets/javascripts/app/app.js.coffee
 @app = angular.module 'Veganizze', [
   'ui.router'
 ]
 {% endhighlight %}
 
-Pronto. Agora falta criar o nosso primeiro estado. Ele se chamará "home" e será o bootstrap da nossa aplicação.
+Pronto. Agora falta criar o nosso primeiro estado. Ele se chamará "home" e será o _bootstrap_ da nossa aplicação.
 
 No arquivo `routes.js.coffee`, configure:
 
 {% highlight coffee %}
+# app/assets/javascripts/config/routes.js.coffee
 @app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) ->
 
   $urlRouterProvider
@@ -148,25 +152,28 @@ No arquivo `routes.js.coffee`, configure:
 
 No código acima estamos informando ao `ui-router` que, caso a página for requisitada e não for encontrada, será redirecionado para a página `/404`. Também estamos adicionando a nossa rota `root` do projeto chamada "home".
 
-Precisaremos definir o nosso bootstrap no ApplicationController (`app/controllers/application_controller.rb`):
+Precisaremos definir o nosso _bootstrap_ no `ApplicationController`:
 
 {% highlight ruby %}
+# app/controllers/application_controller.rb
 def home
 end
 {% endhighlight %}
 
 Lembre-se de criar a pasta `application` dentro de `app/views` e o arquivo `home.html.erb` dentro dela.
 
-E criar a rota do bootstrap (`config/routes.rb`) e alterar o root:
+Vamos criar a rota do _bootstrap_ e alterar o root da aplicação:
 
 {% highlight ruby %}
+# config/routes.rb
 root 'application#home'
 get '*', to: 'application#home'
 {% endhighlight %}
 
-Agora vamos configurar a action home no `application_controller.rb`:
+Agora vamos redirecionar o root da aplicação para a action `index` das receitas:
 
 {% highlight ruby %}
+# app/controllers/application_controller.rb
 def home
   redirect_to recipes_path
 end
@@ -174,7 +181,7 @@ end
 
 Mais tarde voltaremos a falar sobre as rotas. Agora iremos configurar o nosso layout da aplicação, onde será renderizado o conteúdo do bootstrap.
 
-Vamos ao `app/views/layouts/application.html.erb` e definir o aplicativo e o controller da aplicação:
+Vamos ao arquivo `app/views/layouts/application.html.erb` e configurar para bindar as informações do `AngularJS`:
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -192,9 +199,10 @@ Vamos ao `app/views/layouts/application.html.erb` e definir o aplicativo e o con
 </html>
 {% endhighlight %}
 
-Em `ng-controller="ApplicationCtrl"` atribuimos o nosso controller principal. Como ainda não temos esse arquivo, então vamos criar (`app/assets/javascripts/app/controllers/applicationCtrl.js.coffee`):
+Em `ng-controller="ApplicationCtrl"` atribuimos o nosso controller principal. Como ainda não temos o arquivo de controller que foi atribuido `ApplicationCtrl`, então vamos criar:
 
 {% highlight coffee %}
+# app/assets/javascripts/app/controllers/applicationCtrl.js.coffee
 @app.controller 'ApplicationCtrl', ['$scope', ($scope) ->
   $scope.test = "lorem ipsum"
 ] # ApplicationCtrl
@@ -204,7 +212,7 @@ Vamos ver se a página está renderizando "lorem ipsum":
 
 ![Examples ui-router states](http://i.imgur.com/CMBQ9bo.png){: .border-image }
 
-Voltando ao arquivo `app/views/layouts/application.html.erb`:
+Voltando a `app/views/layouts/application.html.erb`:
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -221,9 +229,9 @@ Voltando ao arquivo `app/views/layouts/application.html.erb`:
 </html>
 {% endhighlight %}
 
-Em `ui-view`, ficará todos os estados com seus respectivos conteúdos adicionados na configuração das rotas do `ui-router`. Coloquei o `<%= yield %>` dentro do `ui-view` para caso for necessário, puxar alguma informação diretamente do Rails.
+Em `ui-view`, ficará todos os estados com seus respectivos conteúdos adicionados na configuração das rotas do `ui-router`. Coloquei o `<%= yield %>` dentro do `ui-view` para caso for necessário, puxar alguma informação diretamente do `Rails`.
 
-Já que estamos falando de estados e `ui-router`, vamos abrir o arquivo de rotas e configurar os `resources` das receitas:
+Já que estamos falando de estados e `ui-router`, vamos abrir o arquivo de rotas e configurar as rotas das receitas:
 
 {% highlight coffee %}
 $stateProvider
@@ -284,17 +292,18 @@ $stateProvider
 # $stateProvider
 {% endhighlight %}
 
-Reparem que criei um estado abstrato chamado `recipes`, que servirá como um outro bootstrap para os conteúdos pertencentes ao nó `recipes`. Isso significa que existirá um estado com um conteúdo estático com outros estados dentro dele. Para facilitar a compreensão veja o desenho abaixo:
+Reparem que criei um estado abstrato chamado `recipes`, que servirá como um outro _bootstrap_ para os conteúdos pertencentes ao nó `recipes`. Isso significa que existirá um estado com um conteúdo estático com outros estados dentro dele. Para facilitar a compreensão veja o desenho abaixo:
 
 ![Examples ui-router states](http://i.imgur.com/25dgGGB.png){: .border-image }
 
-No exemplo mostrado acima, o menu (de cor cinza escuro) é o estado abstrato que, ao mudar de página (estado), continua estático e o conteúdo de cor cinza claro muda de acordo com a url. Isso sem precisar recarregar a página.
+No exemplo mostrado acima, o menu (elemento de cor cinza escuro) é um conteúdo abstrato que, ao mudar de página (estado), continua estático. Somente o conteúdo de cor cinza claro altera de acordo com a url. Isso sem precisar de recarregar a página.
 
 Não entrarei muito em detalhe sobre o restante do código acima, pois o post já está ficando grandinho. O que basicamente ele faz é informar ao `ui-router` os estados das receitas, declarar suas respectivas `urls` e definir os `controllers` e hierarquias de estados para renderização na página.
 
 Vamos adicionar nas rotas do Rails o layout para ser a página onde agrega o conteúdo das receitas:
 
 {% highlight ruby %}
+# config/routes.rb
 resources :recipes do
   collection do
     get :layout
@@ -309,7 +318,7 @@ def layout
 end
 {% endhighlight %}
 
-E a página `layout.html.erb` em `app/views/recipes/` com o seguinte conteúdo:
+E a página `layout.html.erb` em `app/views/recipes/`:
 
 {% highlight html %}
 <div ui-view="recipes"></div>

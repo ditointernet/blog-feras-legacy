@@ -9,7 +9,7 @@ comments: true
 
 No post [anterior](http://feras.dito.com.br/posts/2015-12-29-criando-uma-aplicacao-com-angularjs-e-ruby-on-rails-parte-2/) falei como criar e configurar o projeto no Rails adaptado para Angular e mostrei como configurar a aplicação no AngularJS. Neste post, irei mostrar uma simples maneira de consumir os dados do Rails através do AngularJS. Bora lá!
 
-## _3. "Preparando a Receita"_
+## _3 - "Preparando a Receita"_
 
 No arquivo `routes.js.coffee`, vamos injetar o service `$locationProvider` e adicionar mais algumas configurações:
 
@@ -33,9 +33,10 @@ Agora em `application.html.erb`, adicione a tag `<base>` dentro de `<head>`:
 <base href="/">
 {% endhighlight %}
 
-Para organizar as requisições client-side, vamos ao diretório `app/assets/javascripts/app/pages/recipes/factories` e criar um arquivo chamado `recipeFactory.js.coffee` com o seguinte conteúdo:
+Para organizar as requisições client-side, vamos criar um arquivo chamado `recipeFactory.js.coffee` com o seguinte conteúdo:
 
 {% highlight coffee %}
+# app/assets/javascripts/app/pages/recipes/factories/recipeFactory.js.coffee
 @app.factory 'RecipeFactory', ['$http', '$q', ($http, $q) ->
   url = '/recipes'
   deferred = $q.defer()
@@ -85,7 +86,7 @@ Para organizar as requisições client-side, vamos ao diretório `app/assets/jav
 ] # RecipeFactory
 {% endhighlight %}
 
-Agora vamos adicionar um trecho no arquivo `recipes_controller.rb`, dentro das actions, `index` e `set_recipe`:
+Agora vamos adicionar o seguinte trecho no arquivo `recipes_controller.rb`, dentro das actions, `index` e `set_recipe`:
 
 {% highlight ruby %}
 # Dentro da action index
@@ -107,8 +108,12 @@ Depois disso feito, no callback `before_action :set_recipe, only: [:show, :edit,
  # DELETE /recipes/1
 def destroy
   @recipe = Recipe.find(params[:id])
-  @recipe.destroy
-  render nothing: true
+
+  if @recipe.destroy
+    render json: @recipe
+  else
+    render json: { error: true }
+  end
 end
 
 # PATCH/PUT /recipes/1
@@ -162,7 +167,7 @@ Após isso, vamos testar os nossos controllers navegando nas páginas:
 
 ![Página new](http://i.imgur.com/SxVpybL.png){: .border-image}
 
-## _4. Consumindo os dados_
+## _4 - Consumindo os dados_
 
 Tudo certo! Vamos finalmente puxar os dados das receitas. Vamos começar pelo `recipesCtrl.js.coffee`. Faça o seguinte:
 
