@@ -7,7 +7,7 @@ post_author: Paulo Henrique Bruce
 comments: true
 ---
 
-No post [anterior](http://feras.dito.com.br/posts/2015-12-29-criando-uma-aplicacao-com-angularjs-e-ruby-on-rails-parte-2/) falei como criar e configurar o projeto no Rails adaptado para Angular e mostrei como configurar a aplicação no AngularJS. Neste post, irei mostrar uma simples maneira de consumir os dados do Rails através do AngularJS. Bora lá!
+No post [anterior](http://feras.dito.com.br/posts/criando-uma-aplicacao-com-angularjs-e-ruby-on-rails-parte-1/) falei como criar e configurar o projeto no Rails adaptado para Angular e mostrei como configurar a aplicação no AngularJS. Neste post, irei mostrar uma simples maneira de consumir os dados do Rails através do AngularJS. Bora lá!
 
 ## _3 - "Preparando a Receita"_
 

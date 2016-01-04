@@ -19,6 +19,13 @@ _2 - "Preparando a Receita"_
 <br>
 _3 - Consumindo os dados_
 
+<div class="border-image">
+<i>
+  <strong>Disclaimer:</strong> para melhor compreensão dos posts, é recomendado que se tenha um conhecimento prévio das tecnologias de AngularJS e Ruby on Rails.
+</i>
+</div>
+<br>
+
 ## _1 - Criando o projeto Rails_
 Faremos um app que se chamará **_Veganizze_** e será um CRUD de receitas veganas. Neste exemplo, usaremos o MySQL como o banco de dados: `rails new veganizze -T -d mysql`.
 
@@ -105,7 +112,7 @@ O módulo principal da aplicação ficará dentro de `app/assets/javascripts/app
 
 ### Rotas
 
-Nós vamos usar o [ui-router](https://github.com/angular-ui/ui-router/wiki) para controlar as rotas do lado do cliente. Ele é um _framework_ para AngularJS que permite que você organize sua interface por meio do conceito de [state machine](https://en.wikipedia.org/wiki/Finite-state_machine). Diferente da abortagem tradicional que é organizada por meio de `urls`. Para saber mais sobre o ui-router, clique [aqui](https://github.com/angular-ui/ui-router/wiki).
+Nós vamos usar o [ui-router](https://github.com/angular-ui/ui-router/wiki) para controlar as rotas do lado do cliente. Ele é um _framework_ para AngularJS que permite que você organize sua interface por meio do conceito de [state machine](https://en.wikipedia.org/wiki/Finite-state_machine). Diferente da abortagem tradicional que é organizada por meio de `urls`.
 
 Então vamos adicionar o `ui-router` em nosso projeto. Primeiro, vamos ao `Gemfile`:
 
@@ -343,4 +350,4 @@ Agora vamos ajustar a estrutura dos nossos assets. Dentro do diretório `app/ass
               └───models
               recipes.js.coffee
 
-No [próximo e último post](http://feras.dito.com.br/posts/2015-12-29-criando-uma-aplicacao-com-angularjs-e-ruby-on-rails-parte-2/), eu mostrarei como consumir os dados do Rails através do AngularJS. Até a próxima :)
+No [próximo e último post](http://feras.dito.com.br/posts/criando-uma-aplicacao-com-angularjs-e-ruby-on-rails-parte-2/), eu mostrarei como consumir os dados do Rails através do AngularJS. Até a próxima :)
