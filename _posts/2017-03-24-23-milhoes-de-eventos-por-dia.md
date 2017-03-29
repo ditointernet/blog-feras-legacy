@@ -9,11 +9,23 @@ comments: true
 ---
 
 
-Não há nada mais satisfatório para uma empresa que ver seu site ou app bombando. Poucos web apps/sites no mundo têm milhões de pageviews ou usuários únicos por dia. Para efeito de comparação: o StackOveflow que está entre [os 50 sites mais acessados dos EUA](http://www.alexa.com/topsites/countries/US), só em 09 de fevereiro de 2016, teve que responder [209 Milhões de requisições](https://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/). 
+Não há nada mais satisfatório para uma empresa que ver seu site ou app bombando. Mesmo com a gigantesca expansão da web, com a disseminação dos smartphones pelo mundo, poucos web apps/sites têm milhões de pageviews ou usuários únicos por dia. Para efeito de comparação: o StackOveflow que está entre [os 50 sites mais acessados dos EUA](http://www.alexa.com/topsites/countries/US), só em 09 de fevereiro de 2016, teve que responder [209 Milhões de requisições](https://nickcraver.com/blog/2016/02/17/stack-overflow-the-architecture-2016-edition/).
 
-Quando a Dito começou, aposto que o Bruno e o André sonhavam longe e alto, mas mal sabiam como e quando iriam ter que lidar com a marca atual de *100 mil requisições por minuto* e *23 milhões de eventos coletados por dia*. 
+Quando a Dito começou, aposto que o Bruno e o André sonhavam longe e alto, mas mal sabiam como e quando iriam ter que lidar com a marca atual de _450 milhões de eventos em um mês_, com picos de 100k RPM e _36 milhões de notificações enviadas por mês_, chegando à 6 milhões por dia.
 
-Gosto de dizer que, lá por volta de 2011, o que vemos da nossa plataforma ~~momentâneamente~~ moderna de hoje era tudo mato: Railszão monolito, MySQL parrudo e cache no Redis pra todo lado. Obviamente, como devia mesmo ser, um MVP pivotável e de construção rápida para garantir a entrega de valor rápida com um custo ultra reduzido. Muito código com [_blame_](https://git-scm.com/docs/git-blame) de 2012 ainda sobrevive em alguns módulos e serviços, algo que alguns desenvolvedores podem ver com algum receio, mas o que eu particularmente acho de um [valor inestimável](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).
+![Página index](http://i.imgur.com/rrTNDw1.png){: .border-image}
+
+Gosto de dizer que, lá por volta de 2011, o que vemos da nossa plataforma efemeramente moderna de hoje era tudo mato: [Railszão monolito](http://rubyonrails.org/doctrine/#integrated-systems), MySQL parrudo e cache no [Redis pra todo lado](https://www.quora.com/What-are-5-mistakes-to-avoid-when-using-Redis).
+
+![Página index](http://i.imgur.com/0QM6Clj.png)
+
+Tempos depois...
+
+![Página index](http://i.imgur.com/PsqVvl1.jpg)
+
+Obviamente, como devia mesmo ser, um MVP pivotável e de construção rápida para garantir a entrega de valor rápida com um custo ultra reduzido. Muito código com [_blame_](https://git-scm.com/docs/git-blame) de 2012 ainda sobrevive em alguns módulos e serviços, algo que alguns desenvolvedores podem ver com algum receio, mas o que eu particularmente acho de um [valor inestimável](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).
+
+![Página index](http://i.imgur.com/6WhXCjQ.png){: .border-image}
 
 O intuito dessa série de posts é mostrar o estado atual de nossa arquitetura, quais métricas utilizamos no nosso dia a dia e, talvez o mais interessante, quais projetos nossos foram tão importantes para mantermos nossa plataforma eficiênte e escalável, a fim de crescermos sempre, sem solavancos, atendendo as necessidades de nossos clientes, que em momento algum não vão parar enquanto recuperamos o fôlego.
 
